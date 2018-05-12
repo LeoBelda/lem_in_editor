@@ -37,16 +37,16 @@ typedef struct	s_ogl
 	SDL_GLContext	context;
 }				t_ogl;
 
-typedef struct	s_visu
+typedef struct	s_env
 {
 	SDL_Window		*win;
 	t_ogl			ogl;
 	int				x_win;
 	int				y_win;
-}				t_visu;
+}				t_env;
 
-void			init_visu(t_visu *v);
-
-void			clean_visu(t_visu v);
+void			lem_in_visu(void);
+void			init_context(t_env *e);
+void			parse(t_env *e);
 
 #endif

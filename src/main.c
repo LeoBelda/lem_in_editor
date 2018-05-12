@@ -2,6 +2,6 @@
 
 int	main(void)
 {
-	ft_printf("visuu\n");
+	lem_in_visu();
 	return (0);
 }

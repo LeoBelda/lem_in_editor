@@ -1,9 +1,9 @@
 SRC_DIR=src/
 
-ROOT_FILES=main.c
+ROOT_FILES=main.c lem_in_visu.c
 
 INIT_DIR=init/
-INIT_FILES=
+INIT_FILES=init_context.c parse.c
 GRAPHICS_DIR=graphics/
 GRAPHICS_FILES=
 CONTROLS_DIR=controls/
@@ -14,8 +14,7 @@ UTILS_FILES=
 UTILS_DIR=utils/
 UTILS_FILES=ogl_utils.c ogl_wrappers.c \
 			error.c
-SRC_DIRS=$(addprefix $(SRC_DIR), \
-		  $(INIT_DIR) $(GRAPHICS_DIR) $(UTILS_DIR) $(CONTROLS_DIR))
+SRC_DIRS=$(INIT_DIR) $(GRAPHICS_DIR) $(UTILS_DIR) $(CONTROLS_DIR)
 SRC_FILES=$(addprefix $(INIT_DIR), $(INIT_FILES)) \
 		   $(addprefix $(GRAPHICS_DIR), $(GRAPHICS_FILES)) \
 		   $(addprefix $(CONTROLS_DIR), $(CONTROLS_FILES)) \
