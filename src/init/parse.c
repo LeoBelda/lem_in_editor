@@ -1,6 +1,6 @@
-#include "visu.h"
+#include "parse.h"
 
-void	parse(t_env *e)
+t_parse	parse(void)
 {
-	(void)e;
+	return ((t_parse){NULL});
 }

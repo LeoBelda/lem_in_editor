@@ -47,6 +47,5 @@ typedef struct	s_env
 
 void			lem_in_visu(void);
 void			init_context(t_env *e);
-void			parse(t_env *e);
 
 #endif
