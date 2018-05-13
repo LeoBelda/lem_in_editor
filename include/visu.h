@@ -21,6 +21,8 @@
 
 # include "SDL.h"
 # include "common.h"
+# include "parse.h"
+# include "map.h"
 # include "libft.h"
 # include "libftmath.h"
 
@@ -40,6 +42,7 @@ typedef struct	s_ogl
 typedef struct	s_env
 {
 	SDL_Window		*win;
+	t_map			map;
 	t_ogl			ogl;
 	int				x_win;
 	int				y_win;
@@ -47,5 +50,7 @@ typedef struct	s_env
 
 void			lem_in_visu(void);
 void			init_context(t_env *e);
+
+t_map			parse_to_map(t_parse parse);
 
 #endif

@@ -1,4 +1,5 @@
 #include "visu.h"
+#include "map.h"
 #include "parse.h"
 
 void	lem_in_visu(void)
@@ -7,6 +8,6 @@ void	lem_in_visu(void)
 	t_parse	p;
 
 	p = parse();
-	(void)p;
+	e.map = parse_to_map(p);
 	init_context(&e);
 }

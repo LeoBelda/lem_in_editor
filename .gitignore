@@ -2,3 +2,5 @@
 *.o
 visu
 SDL2/
+maps/
+lem-in_maps/

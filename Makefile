@@ -3,27 +3,31 @@ SRC_DIR=src/
 ROOT_FILES=main.c lem_in_visu.c
 
 INIT_DIR=init/
-INIT_FILES=init_context.c parse.c
+INIT_FILES=init_context.c parse.c \
+		   parse_funcs.c parse_funcs_spe.c parse_utils.c parse_to_map.c
+
 GRAPHICS_DIR=graphics/
 GRAPHICS_FILES=
 CONTROLS_DIR=controls/
 CONTROLS_FILES=
 UTILS_DIR=utils/
-UTILS_FILES=
+UTILS_FILES=ogl_utils.c \
+			error.c protec.c
 
-UTILS_DIR=utils/
-UTILS_FILES=ogl_utils.c ogl_wrappers.c \
-			error.c
 SRC_DIRS=$(INIT_DIR) $(GRAPHICS_DIR) $(UTILS_DIR) $(CONTROLS_DIR)
 SRC_FILES=$(addprefix $(INIT_DIR), $(INIT_FILES)) \
 		   $(addprefix $(GRAPHICS_DIR), $(GRAPHICS_FILES)) \
 		   $(addprefix $(CONTROLS_DIR), $(CONTROLS_FILES)) \
+		   $(addprefix $(UTILS_DIR), $(UTILS_FILES)) \
 		   $(ROOT_FILES)
 
 SRC=$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 INC_DIR=include/
-INC_FILES=visu.h common.h
+INC_FILES=visu.h common.h \
+		  map.h parse.h \
+		  objects.h \
+		  common.h ogl_utils.h
 INC=$(addprefix $(INC_DIR), $(INC_FILES))
 
 BUILD_DIR=build/

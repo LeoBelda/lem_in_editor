@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "common.h"
+#include "ogl_utils.h"
 
 char	*parse_shader(const char *shader_path)
 {
