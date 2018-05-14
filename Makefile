@@ -7,14 +7,15 @@ PARSE_FILES=parse.c parse_to_map.c \
 			parse_funcs.c parse_funcs_spe.c parse_utils.c clean_parse.c
 
 INIT_DIR=init/
-INIT_FILES=init_context.c \
+INIT_FILES=init_context.c init_controls.c \
 
 GRAPHICS_DIR=graphics/
-GRAPHICS_FILES=
+GRAPHICS_FILES=render.c
 CONTROLS_DIR=controls/
-CONTROLS_FILES=
+CONTROLS_FILES=handle_events.c kb_misc.c
 UTILS_DIR=utils/
-UTILS_FILES=ogl_utils.c \
+UTILS_FILES=ogl_utils.c build_ogl_program.c \
+			clean_env.c \
 			error.c protec.c
 
 SRC_DIRS=$(PARSE_DIR) $(INIT_DIR) $(GRAPHICS_DIR) $(UTILS_DIR) $(CONTROLS_DIR)
@@ -29,7 +30,7 @@ SRC=$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 INC_DIR=include/
 INC_FILES=visu.h common.h \
-		  map.h parse.h \
+		  map.h parse.h scene.h controls.h \
 		  objects.h \
 		  common.h ogl_utils.h
 INC=$(addprefix $(INC_DIR), $(INC_FILES))

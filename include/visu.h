@@ -23,6 +23,7 @@
 # include "common.h"
 # include "parse.h"
 # include "map.h"
+# include "controls.h"
 # include "libft.h"
 # include "libftmath.h"
 
@@ -44,13 +45,20 @@ typedef struct	s_env
 	SDL_Window		*win;
 	t_map			map;
 	t_ogl			ogl;
+	t_controls		controls;
 	int				x_win;
 	int				y_win;
+	int				quit;
 }				t_env;
 
 void			lem_in_visu(void);
-void			init_context(t_env *e);
-
 t_map			parse_to_map(t_parse parse);
+void			init_env(t_env *e);
+
+int				render(t_env *e);
+
+void			handle_events(t_env *e);
+
+void			clean_env(t_env e);
 
 #endif
