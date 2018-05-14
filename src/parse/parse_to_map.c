@@ -50,7 +50,8 @@ t_map		parse_to_map(t_parse parse)
 	int		i;
 
 	m_pro_null(ants_state = ft_memalloc((parse.ant_count + 1) * sizeof(int)));
-	map = (t_map){ft_lstcount(parse.rooms), parse.rooms, parse.links, NULL,
+	map = (t_map){ft_lstcount(parse.rooms), ft_lstcount(parse.links),
+						parse.rooms, parse.links, NULL,
 						parse.start, parse.end};
 	while (parse.turns)
 	{

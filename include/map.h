@@ -15,6 +15,7 @@ typedef struct	s_move
 typedef struct	s_map
 {
 	int		nb_rooms;
+	int		nb_links;
 	t_list	*rooms;
 	t_list	*links;
 	t_list	*turns;

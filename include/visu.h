@@ -23,6 +23,8 @@
 # include "common.h"
 # include "parse.h"
 # include "map.h"
+# include "scene.h"
+# include "matrices.h"
 # include "controls.h"
 # include "libft.h"
 # include "libftmath.h"
@@ -44,18 +46,24 @@ typedef struct	s_env
 {
 	SDL_Window		*win;
 	t_map			map;
+	t_scene			scene;
 	t_ogl			ogl;
+	t_matrices		matrices;
 	t_controls		controls;
 	int				x_win;
 	int				y_win;
+	float			ratio;
 	int				quit;
 }				t_env;
 
 void			lem_in_visu(void);
 t_map			parse_to_map(t_parse parse);
 void			init_env(t_env *e);
+t_scene			init_scene(t_map map);
+t_matrices		init_matrices(t_map map, float ratio);
 
 int				render(t_env *e);
+void			update_camera(t_scene scene, t_matrices mat);
 
 void			handle_events(t_env *e);
 

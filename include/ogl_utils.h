@@ -25,7 +25,7 @@ typedef struct	s_glfloat3
 	GLfloat	z;
 }				t_glfloat3;
 
-GLuint			build_program(const char *vtx_path, const char *frag_path);
+GLuint			build_ogl_program(const char *vtx_path, const char *frag_path);
 
 char			*parse_shader(const char *shader_path);
 void			print_compile_errors(GLuint shader, int exit);

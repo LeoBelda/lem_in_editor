@@ -32,7 +32,7 @@ static GLuint	init_shader(GLenum type, const char *shader_source)
 	return (shader);
 }
 
-GLuint			build_program(const char *vtx_path, const char *frag_path)
+GLuint			build_ogl_program(const char *vtx_path, const char *frag_path)
 {
 	GLint	ret;
 	GLuint	program;

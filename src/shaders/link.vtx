@@ -1,0 +1,17 @@
+#version 410 core
+
+layout(location = 1) in vec2 pos;
+layout(location = 2) in int state;
+
+uniform matrixBlock
+{
+	mat4 projView;
+}matrices;
+
+out vec4 vtxColor;
+
+void	main()
+{
+	gl_Position = matrices.projView * vec4(pos, 0.0, 1.0);
+	vtxColor = vec4(1.0, 0.0, 0.0, 1.0);
+}
