@@ -69,6 +69,7 @@ int			parse_moves(const char *line, t_parse *parse)
 	}
 	m_pro(ft_lstradd(&parse->turns,
 			ft_lstnewref((void*)moves, len)));
+	ft_tabdel(&tab);
 	return (LINE_OK);
 }
 

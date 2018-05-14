@@ -64,5 +64,6 @@ t_map		parse_to_map(t_parse parse)
 					ft_lstnewref((void*)moves, parse.turns->content_size)));
 		parse.turns = parse.turns->next;
 	}
+	free_pro((void**)&ants_state);
 	return (map);
 }

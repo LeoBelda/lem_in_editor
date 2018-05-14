@@ -2,9 +2,12 @@ SRC_DIR=src/
 
 ROOT_FILES=main.c lem_in_visu.c
 
+PARSE_DIR=parse/
+PARSE_FILES=parse.c parse_to_map.c \
+			parse_funcs.c parse_funcs_spe.c parse_utils.c clean_parse.c
+
 INIT_DIR=init/
-INIT_FILES=init_context.c parse.c \
-		   parse_funcs.c parse_funcs_spe.c parse_utils.c parse_to_map.c
+INIT_FILES=init_context.c \
 
 GRAPHICS_DIR=graphics/
 GRAPHICS_FILES=
@@ -14,8 +17,9 @@ UTILS_DIR=utils/
 UTILS_FILES=ogl_utils.c \
 			error.c protec.c
 
-SRC_DIRS=$(INIT_DIR) $(GRAPHICS_DIR) $(UTILS_DIR) $(CONTROLS_DIR)
+SRC_DIRS=$(PARSE_DIR) $(INIT_DIR) $(GRAPHICS_DIR) $(UTILS_DIR) $(CONTROLS_DIR)
 SRC_FILES=$(addprefix $(INIT_DIR), $(INIT_FILES)) \
+		   $(addprefix $(PARSE_DIR), $(PARSE_FILES)) \
 		   $(addprefix $(GRAPHICS_DIR), $(GRAPHICS_FILES)) \
 		   $(addprefix $(CONTROLS_DIR), $(CONTROLS_FILES)) \
 		   $(addprefix $(UTILS_DIR), $(UTILS_FILES)) \

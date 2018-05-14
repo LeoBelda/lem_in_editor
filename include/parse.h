@@ -68,4 +68,6 @@ int				link_is_duplicate(t_room *link, t_list *links);
 t_room			*look_for_room(const char *name, t_list *rooms);
 int				name_is_duplicate(const char *name, t_list *rooms);
 
+void			clean_parse(t_parse parse);
+
 #endif

@@ -9,5 +9,6 @@ void	lem_in_visu(void)
 
 	p = parse();
 	e.map = parse_to_map(p);
+	clean_parse(p);
 	init_context(&e);
 }

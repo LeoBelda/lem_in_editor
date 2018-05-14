@@ -53,3 +53,5 @@ void	apply_command(t_parse *parse)
 		parse->end = (t_room*)parse->rooms->content;
 	parse->command = COMMAND_NONE;
 }
+
+
