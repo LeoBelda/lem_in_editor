@@ -32,7 +32,7 @@ static void			init_link_buffers(t_scene scene)
 	glVertexAttribPointer(VBO_TRANS, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos[VBO_STATE]);
 	glEnableVertexAttribArray(VBO_STATE);
-	glVertexAttribPointer(VBO_STATE, 2, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(VBO_STATE, 1, GL_INT, GL_FALSE, 0, NULL);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, scene.ibos[IBO_LINK]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
 			scene.nb_links * 2 * sizeof(GLuint),

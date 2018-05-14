@@ -14,7 +14,7 @@ out vec4 vtxColor;
 void	main()
 {
 	float	scale = 0.5;
-	vec4 position = vec4((pos * 0.5 + i_trans), 0.0, 1.0);
+	vec4 position = vec4((pos * scale + i_trans), 0.0, 1.0);
 	gl_Position = matrices.projView * position;
 	vtxColor = vec4(1.0, 0.0, 0.0, 1.0);
 }

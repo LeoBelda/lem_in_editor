@@ -18,9 +18,11 @@ static void	render_rooms(t_scene scene)
 {
 	glUseProgram(scene.programs[PROG_ROOM]);
 	glBindVertexArray(scene.vaos[VAO_ROOM]);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, scene.ibos[IBO_ROOM]);
 	glDrawElementsInstanced(GL_TRIANGLES,
 			scene.room_model.nb_indices, GL_UNSIGNED_INT, NULL,
 			scene.nb_rooms);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 	glUseProgram(0);
 }
@@ -29,8 +31,10 @@ static void	render_links(t_scene scene)
 {
 	glUseProgram(scene.programs[PROG_LINK]);
 	glBindVertexArray(scene.vaos[VAO_LINK]);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, scene.ibos[IBO_LINK]);
 	glDrawElements(GL_LINES,
 			scene.nb_links * 2, GL_UNSIGNED_INT, NULL);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 	glUseProgram(0);
 }
