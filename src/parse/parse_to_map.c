@@ -61,7 +61,7 @@ t_map		parse_to_map(t_parse parse)
 		while (((t_moveparse*)parse.turns->content)[++i].name)
 			moves[i] = convert_move(((t_moveparse*)parse.turns->content)[i],
 									parse, ants_state);
-		m_pro(ft_lstadd(&map.turns,
+		m_pro(ft_lstradd(&map.turns,
 					ft_lstnewref((void*)moves, parse.turns->content_size)));
 		parse.turns = parse.turns->next;
 	}

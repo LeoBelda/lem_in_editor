@@ -67,7 +67,7 @@ int			parse_moves(const char *line, t_parse *parse)
 		i++;
 		m_pro_null(moves[len].name = ft_strdup(&tab[len][i]));
 	}
-	m_pro(ft_lstadd(&parse->turns, ft_lstnewref((void*)moves, len)));
+	m_pro(ft_lstradd(&parse->turns, ft_lstnewref((void*)moves, len)));
 	ft_tabdel(&tab);
 	ft_putendl(line);
 	return (LINE_OK);
