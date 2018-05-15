@@ -19,7 +19,7 @@ static void	render_rooms(t_scene scene)
 	glUseProgram(scene.programs[PROG_ROOM]);
 	glBindVertexArray(scene.vaos[VAO_ROOM]);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, scene.ibos[IBO_ROOM]);
-	glDrawElementsInstanced(GL_TRIANGLES,
+	glDrawElementsInstanced(GL_TRIANGLE_FAN,
 			scene.room_model.nb_indices, GL_UNSIGNED_INT, NULL,
 			scene.nb_rooms);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
