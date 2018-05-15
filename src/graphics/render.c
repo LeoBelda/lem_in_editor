@@ -45,7 +45,8 @@ int		render(t_env *e)
 	{
 		handle_events(e);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		update_camera(e->scene, e->matrices);
+		update_turns(&e->scene, &e->map);
+		update_uniforms(e->scene, e->matrices);
 		render_rooms(e->scene);
 		render_links(e->scene);
 		check_glerror();

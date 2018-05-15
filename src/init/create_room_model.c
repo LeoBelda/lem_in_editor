@@ -3,20 +3,20 @@
 #define MOD_NB_VTX 9
 #define MOD_NB_IND 10
 
-static t_glfloat2	*gen_coords(void)
+static t_glfloat3	*gen_coords(void)
 {
-	t_glfloat2	*coords;
+	t_glfloat3	*coords;
 
-	m_pro_null(coords = ft_memalloc(MOD_NB_VTX * sizeof(t_glfloat2)));
-	coords[0] = (t_glfloat2){0.0, 0.0};
-	coords[1] = (t_glfloat2){1.0, 0.4};
-	coords[2] = (t_glfloat2){1.0, -0.4};
-	coords[3] = (t_glfloat2){0.4, -1.00};
-	coords[4] = (t_glfloat2){-0.4, -1.00};
-	coords[5] = (t_glfloat2){-1.0, -0.40};
-	coords[6] = (t_glfloat2){-1.0, 0.40};
-	coords[7] = (t_glfloat2){-0.4, 1.00};
-	coords[8] = (t_glfloat2){0.4, 1.00};
+	m_pro_null(coords = ft_memalloc(MOD_NB_VTX * sizeof(t_glfloat3)));
+	coords[0] = (t_glfloat3){0.0, 0.0, 1.0};
+	coords[1] = (t_glfloat3){1.0, 0.4, 0.0};
+	coords[2] = (t_glfloat3){1.0, -0.4, 0.0};
+	coords[3] = (t_glfloat3){0.4, -1.00, 0.0};
+	coords[4] = (t_glfloat3){-0.4, -1.00, 0.0};
+	coords[5] = (t_glfloat3){-1.0, -0.40, 0.0};
+	coords[6] = (t_glfloat3){-1.0, 0.40, 0.0};
+	coords[7] = (t_glfloat3){-0.4, 1.00, 0.0};
+	coords[8] = (t_glfloat3){0.4, 1.00, 0.0};
 	return (coords);
 }
 

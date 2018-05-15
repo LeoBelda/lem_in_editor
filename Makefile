@@ -11,7 +11,7 @@ INIT_FILES=init_context.c init_controls.c init_scene.c init_matrices.c\
 		   create_room_model.c init_scene_helpers.c
 
 GRAPHICS_DIR=graphics/
-GRAPHICS_FILES=render.c update_camera.c
+GRAPHICS_FILES=render.c update_uniforms.c update_turns.c
 CONTROLS_DIR=controls/
 CONTROLS_FILES=handle_events.c kb_misc.c
 UTILS_DIR=utils/

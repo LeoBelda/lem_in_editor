@@ -1,12 +1,13 @@
 #version 410 core
 
-layout(location = 0) in vec2 pos;
+layout(location = 0) in vec3 pos;
 layout(location = 1) in vec2 i_trans;
-layout(location = 2) in int i_state;
+layout(location = 2) in ivec2 i_state;
 
 uniform matrixBlock
 {
 	mat4 projView;
+	float ratio;
 }matrices;
 
 out vec4 vtxColor;
@@ -14,7 +15,14 @@ out vec4 vtxColor;
 void	main()
 {
 	float	scale = 0.5;
-	vec4 position = vec4((pos * scale + i_trans), 0.0, 1.0);
+	vec4 position = vec4((pos * scale + vec3(i_trans, 0.)), 1.0);
 	gl_Position = matrices.projView * position;
-	vtxColor = vec4(1.0, 0.0, 0.0, 1.0);
+	if (matrices.ratio < 0.5)
+	{
+		vtxColor = vec4(float(i_state.x) * matrices.ratio, 0.0, 0.0, 1.0);
+	}
+	else
+	{
+		vtxColor = vec4(0.0, float(i_state.y) * (1. - matrices.ratio), 0.0, 1.0);
+	}
 }

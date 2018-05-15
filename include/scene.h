@@ -46,7 +46,7 @@ enum			e_programs
 
 typedef struct	s_mesh
 {
-	t_glfloat2	*coords;
+	t_glfloat3	*coords;
 	int			nb_coords;
 	GLuint		*indices;
 	int			nb_indices;
@@ -65,6 +65,8 @@ typedef struct	s_scene
 	t_glfloat2	*room_positions;
 	int			nb_links;
 	GLuint		*link_indices;
+	t_vec2r		*states;
+	float		ratio;
 }				t_scene;
 
 t_mesh			create_room_model(void);

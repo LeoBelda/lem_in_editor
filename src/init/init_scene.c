@@ -21,7 +21,8 @@ static void			init_uniforms(t_scene scene)
 	}
 	glBindBuffer(GL_UNIFORM_BUFFER, scene.ubo);
 	glBindBufferBase(GL_UNIFORM_BUFFER, U_BINDING1, scene.ubo);
-	glBufferData(GL_UNIFORM_BUFFER, sizeof(t_mat4), NULL, GL_STREAM_DRAW);
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(t_mat4) + sizeof(float),
+									NULL, GL_STREAM_DRAW);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
 
@@ -51,10 +52,10 @@ static void			init_instances_buffers(t_scene scene)
 	glVertexAttribDivisor(VBO_TRANS, 1);
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos[VBO_STATE]);
 	glBufferData(GL_ARRAY_BUFFER,
-			scene.nb_rooms * sizeof(GLint),
+			scene.nb_rooms * sizeof(GLint) * 2,
 			NULL, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(VBO_STATE);
-	glVertexAttribPointer(VBO_STATE, 2, GL_BYTE, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(VBO_STATE, 2, GL_INT, GL_FALSE, 0, NULL);
 	glVertexAttribDivisor(VBO_STATE, 1);
 }
 
@@ -62,10 +63,10 @@ static void			init_room_buffers(t_scene scene, t_mesh mod)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos[VBO_MODEL_COORDS]);
 	glBufferData(GL_ARRAY_BUFFER,
-			mod.nb_coords * sizeof(GLfloat) * 2,
+			mod.nb_coords * sizeof(GLfloat) * 3,
 			mod.coords, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, scene.ibos[IBO_ROOM]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
 			mod.nb_indices * sizeof(GLuint),
@@ -83,6 +84,7 @@ t_scene				init_scene(t_map map)
 	scene.room_positions = get_room_positions(map.rooms, map.nb_rooms);
 	scene.link_indices = get_link_indices(map.links, map.nb_links);
 	scene.room_model = create_room_model();
+	m_pro_null(scene.states = ft_memalloc(sizeof(t_vec2r) * scene.nb_rooms));
 	glGenVertexArrays(VAO_MAX, scene.vaos);
 	glGenBuffers(VBO_MAX, scene.vbos);
 	glGenBuffers(IBO_MAX, scene.ibos);
