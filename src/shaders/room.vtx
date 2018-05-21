@@ -15,14 +15,21 @@ out vec4 vtxColor;
 void	main()
 {
 	float	scale = 0.5;
+	float	t_ratio;
+	vec2	f_state;
+	if(i_state.x != 0)f_state.x = 1; else f_state.x = 0.;
+	if(i_state.y != 0)f_state.y = 1; else f_state.y = 0.;
 	vec4 position = vec4((pos * scale + vec3(i_trans, 0.)), 1.0);
 	gl_Position = matrices.projView * position;
+
 	if (matrices.ratio < 0.5)
 	{
-		vtxColor = vec4(float(i_state.x) * matrices.ratio, 0.0, 0.0, 1.0);
+		t_ratio = matrices.ratio * 2.;
+	vtxColor = vec4((1. - t_ratio) * float(f_state.x), 0.0 , 0.0, 1.0);
 	}
 	else
 	{
-		vtxColor = vec4(0.0, float(i_state.y) * (1. - matrices.ratio), 0.0, 1.0);
+		t_ratio = (matrices.ratio - 0.5) * 2.;
+	vtxColor = vec4(t_ratio * float(f_state.y),0.0 , 0.0, 1.0);
 	}
 }

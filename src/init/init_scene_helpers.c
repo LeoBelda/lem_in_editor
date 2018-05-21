@@ -17,18 +17,20 @@ t_glfloat2	*get_room_positions(t_list *rooms, int nb_rooms)
 	return (positions);
 }
 
-GLuint		*get_link_indices(t_list *links, int nb_links)
+t_glfloat2	*get_link_positions(t_list *links, int nb_links)
 {
-	GLuint	*indices;
-	int		i;
+	t_glfloat2	*positions;
+	int			i;
 
-	m_pro_null(indices = ft_memalloc(nb_links * sizeof(GLuint) * 2));
+	m_pro_null(positions = ft_memalloc(nb_links * sizeof(t_glfloat2) * 2));
 	i = 0;
 	while (links)
 	{
-		indices[i++] = ((t_link*)links->content)->a->id;
-		indices[i++] = ((t_link*)links->content)->b->id;
+		positions[i++] = (t_glfloat2) {((t_link*)links->content)->a->coords.x,
+					((t_link*)links->content)->a->coords.y};
+		positions[i++] = (t_glfloat2) {((t_link*)links->content)->b->coords.x,
+					((t_link*)links->content)->b->coords.y};
 		links = links->next;
 	}
-	return (indices);
+	return (positions);
 }

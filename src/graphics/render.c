@@ -31,10 +31,7 @@ static void	render_links(t_scene scene)
 {
 	glUseProgram(scene.programs[PROG_LINK]);
 	glBindVertexArray(scene.vaos[VAO_LINK]);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, scene.ibos[IBO_LINK]);
-	glDrawElements(GL_LINES,
-			scene.nb_links * 2, GL_UNSIGNED_INT, NULL);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glDrawArrays(GL_LINES, 0, scene.nb_links * 2);
 	glBindVertexArray(0);
 	glUseProgram(0);
 }

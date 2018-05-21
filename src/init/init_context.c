@@ -47,6 +47,6 @@ void	init_env(t_env *e)
 	glClearColor(0., 0., 0., 1.);
 	glViewport(0, 0, e->x_win, e->y_win);
 	glEnable(GL_DEPTH_TEST);
-	glLineWidth(3.);
+	glLineWidth(4.);
 	glDepthFunc(GL_LESS);
 }

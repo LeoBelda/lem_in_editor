@@ -23,10 +23,16 @@ enum			e_vbos
 	VBO_MAX
 };
 
+enum			e_vbos_link
+{
+	VBO_MODEL_COORDS_LK,
+	VBO_STATE_LK,
+	VBO_MAX_LK
+};
+
 enum			e_ibos
 {
 	IBO_ROOM,
-	IBO_LINK,
 	IBO_MAX
 };
 
@@ -35,6 +41,12 @@ enum			e_vaos
 	VAO_ROOM,
 	VAO_LINK,
 	VAO_MAX
+};
+
+enum			e_ubos
+{
+	UBO_0,
+	UBO_MAX
 };
 
 enum			e_programs
@@ -57,21 +69,23 @@ typedef struct	s_scene
 	GLuint		programs[PROG_MAX];
 	GLuint		vaos[VAO_MAX];
 	GLuint		ibos[IBO_MAX];
-	GLuint		vbos[VBO_MAX];
-	GLuint		ubo;
+	GLuint		vbos_room[VBO_MAX];
+	GLuint		vbos_link[VBO_MAX];
+	GLuint		ubos[UBO_MAX];
 	GLint		u_block[PROG_MAX];
 	t_mesh		room_model;
-	int			nb_rooms;
 	t_glfloat2	*room_positions;
+	t_vec2r		*room_states;
+	int			nb_rooms;
+	t_glfloat2	*link_positions;
+	t_vec2r		*link_states;
 	int			nb_links;
-	GLuint		*link_indices;
-	t_vec2r		*states;
 	float		ratio;
 }				t_scene;
 
 t_mesh			create_room_model(void);
 
 t_glfloat2		*get_room_positions(t_list *rooms, int nb_rooms);
-GLuint			*get_link_indices(t_list *links, int nb_links);
+t_glfloat2		*get_link_positions(t_list *links, int nb_links);
 
 #endif

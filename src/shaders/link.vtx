@@ -1,7 +1,7 @@
 #version 410 core
 
-layout(location = 1) in vec2 pos;
-layout(location = 2) in ivec2 state;
+layout(location = 0) in vec2 pos;
+layout(location = 1) in ivec2 state;
 
 uniform matrixBlock
 {
@@ -10,11 +10,15 @@ uniform matrixBlock
 }matrices;
 
 out vec4 vtxColor;
-out vec2 out_state;
+out float f_state_x;
+out float f_state_y;
+flat out float t_ratio;
 
 void	main()
 {
+	vec2 f_state;
 	gl_Position = matrices.projView * vec4(pos, 0.0, 1.0);
-	out_state = vec2(float(state.x), float(state.y));
-	vtxColor = vec4(1.0, 1.0, 1.0, 1.0) * matrices.ratio;
+	if(state.x != 0)f_state_x = 1.; else f_state_x = 0.;
+	if(state.y != 0)f_state_y = 1.; else f_state_y = 0.;
+	vtxColor = vec4(1.0, 1.0, 1.0, 1.0);
 }

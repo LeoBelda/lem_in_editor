@@ -1,7 +1,10 @@
 #version 410 core
 
 in vec4		vtxColor;
-in vec2		state;
+in float f_state_x;
+in float f_state_y;
+flat in float t_ratio;
+
 out vec4	fragColor;
 
 uniform matrixBlock
