@@ -9,13 +9,12 @@ uniform matrixBlock
 	float ratio;
 }matrices;
 
-out vec4 vtxColor;
 out float f_state;
 
 void	main()
 {
-	float f_state;
+	float t_state;
 	gl_Position = matrices.projView * vec4(pos, 0.0, 1.0);
+	t_state = state * matrices.ratio;
 	f_state = state;
-	vtxColor = vec4(1.0, 1. - state, 1. - state, 1.0);
 }
