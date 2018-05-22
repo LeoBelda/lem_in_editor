@@ -9,7 +9,7 @@ static t_link	*find_link(t_room end, t_room start)
 	{
 		handle = (t_link*)end.links->content;
 		if ((handle->a->id == start.id || handle->b->id == start.id)
-				&& (handle->b->id == end.id || handle->b->id == end.id))
+				&& (handle->a->id == end.id || handle->b->id == end.id))
 			return (handle);
 		end.links = end.links->next;
 	}
