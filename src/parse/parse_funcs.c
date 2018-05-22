@@ -15,6 +15,9 @@
 #define WHITE_STR " \t\v\f\r"
 #define DIGIT_STR "-0123456789"
 
+#define LK1 0
+#define LK2 1
+
 int			parse_ants(const char *line, t_parse *parse)
 {
 	int	i;
@@ -67,28 +70,29 @@ static int	line_is_room(const char *line)
 
 static int	store_link(const char *line, t_parse *parse, int len1, int len2)
 {
-	char	r1[len1 + 1];
-	char	r2[len2 + 1];
-	t_room	*ptr1;
-	t_room	*ptr2;
-	t_link	link;
+	char		r1[len1 + 1];
+	char		r2[len2 + 1];
+	t_room		*ptr[2];
+	static int	id = 0;
+	t_link		link;
 
 	ft_strncpy(r1, line, len1);
 	r1[len1] = '\0';
 	ft_strncpy(r2, &line[ft_strcspn(line, "-") + 1], len2);
 	r2[len2] = '\0';
-	if (!ft_strcmp(r1, r2) || !(ptr1 = look_for_room(r1, parse->rooms))
-							|| !(ptr2 = look_for_room(r2, parse->rooms)))
+	if (!ft_strcmp(r1, r2) || !(ptr[LK1] = look_for_room(r1, parse->rooms))
+							|| !(ptr[LK2] = look_for_room(r2, parse->rooms)))
 		return (LINE_MAP_BAD);
-	if (!link_is_duplicate(ptr1, ptr2->links))
+	if (!link_is_duplicate(ptr[LK1], ptr[LK2]->links))
 	{
-		link = (t_link){ptr1, ptr2};
+		link = (t_link){id, ptr[LK1], ptr[LK2]};
 		m_pro(ft_lstadd(&parse->links,
 					ft_lstnew((void*)&link, sizeof(t_link))));
-		m_pro(ft_lstadd(&ptr1->links,
+		m_pro(ft_lstadd(&ptr[LK1]->links,
 					ft_lstnewref(parse->links->content, 0)));
-		m_pro(ft_lstadd(&ptr2->links,
+		m_pro(ft_lstadd(&ptr[LK2]->links,
 					ft_lstnewref(parse->links->content, 0)));
+		id++;
 	}
 	return (LINE_OK);
 }

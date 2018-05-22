@@ -181,6 +181,7 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list			*ft_lstmap_param(t_list *lst, void *param,
 				t_list *(*f)(t_list *elem, void *param));
 void			*ft_lst_to_array(t_list *lst);
+void			ft_lstrev(t_list **lst);
 
 void			*ft_memrcpy(void *dst, const void *src, size_t n);
 size_t			ft_strspn(const char *s, const char *charset);

@@ -14,6 +14,7 @@ typedef struct	s_room
 
 typedef struct	s_link
 {
+	int		id;
 	t_room	*a;
 	t_room	*b;
 }				t_link;

@@ -34,10 +34,10 @@ static void			init_link_buffers(t_scene scene)
 	glEnableVertexAttribArray(VBO_MODEL_COORDS_LK);
 	glVertexAttribPointer(VBO_MODEL_COORDS_LK, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_link[VBO_STATE_LK]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(t_vec2r) * scene.nb_links * 2,
-				NULL, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * scene.nb_links * 2,
+				NULL, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(VBO_STATE_LK);
-	glVertexAttribPointer(VBO_STATE_LK, 2, GL_INT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(VBO_STATE_LK, 1, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
@@ -85,7 +85,7 @@ t_scene				init_scene(t_map map)
 	scene.link_positions = get_link_positions(map.links, map.nb_links);
 	scene.room_model = create_room_model();
 	m_pro_null(scene.room_states = ft_memalloc(sizeof(t_vec2r) * scene.nb_rooms));
-	m_pro_null(scene.link_states = ft_memalloc(sizeof(t_vec2r) * scene.nb_links * 2));
+	m_pro_null(scene.link_states = ft_memalloc(sizeof(GLfloat) * scene.nb_links * 2));
 	glGenVertexArrays(VAO_MAX, scene.vaos);
 	glGenBuffers(VBO_MAX, scene.vbos_room);
 	glGenBuffers(VBO_MAX_LK, scene.vbos_link);

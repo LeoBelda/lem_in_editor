@@ -1,16 +1,17 @@
 #include "parse.h"
 #include "map.h"
 
-static t_link	*find_link(t_room *end, t_list *links)
+static t_link	*find_link(t_room end, t_room start)
 {
 	t_link	*handle;
 
-	while (links)
+	while (end.links)
 	{
-		handle = (t_link*)links->content;
-		if (handle->a == end || handle->b == end)
+		handle = (t_link*)end.links->content;
+		if ((handle->a->id == start.id || handle->b->id == start.id)
+				&& (handle->b->id == end.id || handle->b->id == end.id))
 			return (handle);
-		links = links->next;
+		end.links = end.links->next;
 	}
 	return (NULL);
 }
@@ -33,8 +34,7 @@ static t_move	convert_move(t_moveparse old_fmt, t_parse parse, int *ants_state)
 			move.end = (t_room*)parse.rooms->content;
 			ants_state[old_fmt.ant_id] = (move.end == parse.end ? -1
 								: ((t_room*)parse.rooms->content)->id);
-			if (!(move.lk = find_link(move.end,
-							((t_room*)parse.rooms->content)->links)))
+			if (!(move.lk = find_link(*move.end, *move.start)))
 				error_exit("illegal move: invalid ant dest");
 		}
 		parse.rooms = parse.rooms->next;

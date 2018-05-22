@@ -125,6 +125,7 @@ FILES_LIBFT=ft_printf.c ft_dprintf.c ft_snprintf.c ft_sprintf.c ft_asprintf.c \
 			 ft_lstmap.c \
 			 ft_lstmap_param.c \
 			 ft_lst_to_array.c \
+			 ft_lstrev.c \
 			 \
 			 ft_memrcpy.c \
 			 ft_strspn.c \

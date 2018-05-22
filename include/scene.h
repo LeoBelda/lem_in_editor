@@ -78,7 +78,7 @@ typedef struct	s_scene
 	t_vec2r		*room_states;
 	int			nb_rooms;
 	t_glfloat2	*link_positions;
-	t_vec2r		*link_states;
+	GLfloat		*link_states;
 	int			nb_links;
 	float		ratio;
 }				t_scene;

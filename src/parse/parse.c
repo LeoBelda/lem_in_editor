@@ -56,5 +56,6 @@ t_parse		parse(void)
 			error_exit(valid_line == LINE_USR_BAD ?
 						"solution badly formatted" : "map error");
 	}
+	ft_lstrev(&parse.links);
 	return (parse);
 }
