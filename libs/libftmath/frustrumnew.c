@@ -12,7 +12,20 @@
 
 #include "libftmath.h"
 
-t_frustrum	frustrumnew(float r, float t, float f, float n)
+t_frustrum		ffrustrumnew(t_vec2 lr, t_vec2 bt, t_vec2 fn)
+{
+	t_frustrum	fr;
+
+	fr.l = lr.x;
+	fr.r = lr.y;
+	fr.b = bt.x;
+	fr.t = bt.y;
+	fr.f = fn.x;
+	fr.n = fn.y;
+	return (fr);
+}
+
+t_frustrum		frustrumnew(float r, float t, float f, float n)
 {
 	t_frustrum	fr;
 

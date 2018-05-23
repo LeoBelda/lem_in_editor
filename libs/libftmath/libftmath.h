@@ -89,6 +89,7 @@ t_mat4			rotzmat4new(float z);
 t_mat4			orthomat4new(t_frustrum fr);
 t_mat4			persmat4new(float fovh, float fovl, float f, float n);
 t_frustrum		frustrumnew(float r, float t, float f, float n);
+t_frustrum		ffrustrumnew(t_vec2 lr, t_vec2 bt, t_vec2 fn);
 t_mat4			look_at(t_vec4 eye, t_vec4 target, t_vec4 up);
 
 t_vec4			cross_product(t_vec4 a, t_vec4 b);
