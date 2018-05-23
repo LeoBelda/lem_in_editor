@@ -13,7 +13,7 @@ INIT_FILES=init_context.c init_controls.c init_scene.c init_matrices.c\
 GRAPHICS_DIR=graphics/
 GRAPHICS_FILES=render.c update_uniforms.c update_turns.c
 CONTROLS_DIR=controls/
-CONTROLS_FILES=handle_events.c kb_misc.c
+CONTROLS_FILES=handle_events.c kb_misc.c kb_forward.c kb_play.c
 UTILS_DIR=utils/
 UTILS_FILES=ogl_utils.c build_ogl_program.c \
 			clean_env.c \
