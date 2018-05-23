@@ -84,7 +84,7 @@ t_scene				init_scene(t_map map)
 	scene.room_positions = get_room_positions(map.rooms, map.nb_rooms);
 	scene.link_positions = get_link_positions(map.links, map.nb_links);
 	scene.room_model = create_room_model();
-	scene.timeline = (t_timeline){0., 0., 0, map.nb_turns, 0.05};
+	scene.timeline = (t_timeline){0., 0., -1, map.nb_turns, 0.};
 	m_pro_null(scene.room_states = ft_memalloc(sizeof(t_vec2r) * scene.nb_rooms));
 	m_pro_null(scene.link_states = ft_memalloc(sizeof(GLfloat) * scene.nb_links * 2));
 	glGenVertexArrays(VAO_MAX, scene.vaos);
