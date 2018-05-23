@@ -45,24 +45,25 @@ static t_move	convert_move(t_moveparse old_fmt, t_parse parse, int *ants_state)
 t_map		parse_to_map(t_parse parse)
 {
 	t_map	map;
-	t_move	*moves;
 	int		*ants_state;
 	int		i;
+	int		j;
 
 	m_pro_null(ants_state = ft_memalloc((parse.ant_count + 1) * sizeof(int)));
 	map = (t_map){ft_lstcount(parse.rooms), ft_lstcount(parse.links),
-						parse.rooms, parse.links, NULL,
+			ft_lstcount(parse.turns), parse.rooms, parse.links, NULL,
 						parse.start, parse.end};
-	while (parse.turns)
+	m_pro_null(map.turns = ft_memalloc((map.nb_turns + 1) * sizeof(t_move*)));
+	j = -1;
+	while (++j < map.nb_turns)
 	{
-		m_pro_null(moves = ft_memalloc(parse.turns->content_size *
+		m_pro_null(map.turns[j] = ft_memalloc((parse.turns->content_size + 1) *
 												sizeof(t_move)));
 		i = -1;
 		while (((t_moveparse*)parse.turns->content)[++i].name)
-			moves[i] = convert_move(((t_moveparse*)parse.turns->content)[i],
+			map.turns[j][i] =
+				convert_move(((t_moveparse*)parse.turns->content)[i],
 									parse, ants_state);
-		m_pro(ft_lstradd(&map.turns,
-					ft_lstnewref((void*)moves, parse.turns->content_size)));
 		parse.turns = parse.turns->next;
 	}
 	free_pro((void**)&ants_state);

@@ -16,9 +16,10 @@ typedef struct	s_map
 {
 	int		nb_rooms;
 	int		nb_links;
+	int		nb_turns;
 	t_list	*rooms;
 	t_list	*links;
-	t_list	*turns;
+	t_move	**turns;
 	t_room	*start;
 	t_room	*end;
 }				t_map;

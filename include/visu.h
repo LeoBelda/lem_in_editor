@@ -64,7 +64,7 @@ t_matrices		init_matrices(t_map map, float ratio);
 
 int				render(t_env *e);
 void			update_uniforms(t_scene scene, t_matrices mat);
-void			update_turns(t_scene *scene, t_map *map);
+void			update_turns(t_scene *scene, t_map map);
 
 void			handle_events(t_env *e);
 

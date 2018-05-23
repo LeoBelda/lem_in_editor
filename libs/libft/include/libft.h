@@ -201,6 +201,9 @@ t_list			*ft_strsplit_lst(char const *s, char c);
 void			ft_swap(int *a, int *b);
 int				ft_max(int a, int b);
 int				ft_min(int a, int b);
+float			ft_fmax(float a, float b);
+float			ft_fmin(float a, float b);
+float			ft_fclamp(float min, float max, float val);
 
 int				create_dsint(t_dsint *a, size_t size);
 void			set_dsint_val(t_dsint a, uintmax_t val);

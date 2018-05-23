@@ -64,6 +64,15 @@ typedef struct	s_mesh
 	int			nb_indices;
 }				t_mesh;
 
+typedef struct	s_timeline
+{
+	float	progress;
+	float	ratio;
+	int		cur_turn;
+	int		nb_turns;
+	float	inc;
+}				t_timeline;
+
 typedef struct	s_scene
 {
 	GLuint		programs[PROG_MAX];
@@ -80,6 +89,7 @@ typedef struct	s_scene
 	t_glfloat2	*link_positions;
 	GLfloat		*link_states;
 	int			nb_links;
+	t_timeline	timeline;
 	float		ratio;
 }				t_scene;
 

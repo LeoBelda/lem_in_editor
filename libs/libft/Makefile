@@ -145,6 +145,7 @@ FILES_LIBFT=ft_printf.c ft_dprintf.c ft_snprintf.c ft_sprintf.c ft_asprintf.c \
 			 ft_swap.c \
 			 ft_max.c \
 			 ft_min.c \
+			 ft_fclamp.c \
 			 \
 			 create_dsint.c \
 			 shift_dsint.c \
