@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_to_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/24 13:17:53 by lbelda            #+#    #+#             */
+/*   Updated: 2018/05/24 13:17:54 by lbelda           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parse.h"
 #include "map.h"
 
@@ -16,7 +28,8 @@ static t_link	*find_link(t_room end, t_room start)
 	return (NULL);
 }
 
-static t_move	convert_move(t_moveparse old_fmt, t_parse parse, int *ants_state)
+static t_move	convert_move(t_moveparse old_fmt, t_parse parse,
+									int *ants_state)
 {
 	t_move	move;
 
@@ -42,7 +55,7 @@ static t_move	convert_move(t_moveparse old_fmt, t_parse parse, int *ants_state)
 	return (move);
 }
 
-t_map		parse_to_map(t_parse parse)
+t_map			parse_to_map(t_parse parse)
 {
 	t_map	map;
 	int		*ants_state;

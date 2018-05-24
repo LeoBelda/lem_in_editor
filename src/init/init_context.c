@@ -1,20 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_context.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/24 10:27:35 by lbelda            #+#    #+#             */
+/*   Updated: 2018/05/24 13:33:47 by lbelda           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "visu.h"
 
-# ifdef __APPLE__
+#ifdef __APPLE__
 
 static void	compat(void)
 {
 	return ;
 }
 
-# else
+#else
 
 static void	compat(void)
 {
 	glewInit();
 }
 
-# endif
+#endif
 
 static void	init_sdl(t_env *e)
 {
@@ -40,7 +52,7 @@ static void	init_sdl(t_env *e)
 		error_exit(SDL_GetError());
 }
 
-void	init_env(t_env *e)
+void		init_env(t_env *e)
 {
 	init_sdl(e);
 	compat();

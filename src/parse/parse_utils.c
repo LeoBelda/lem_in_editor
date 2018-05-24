@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 16:24:08 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/07 16:24:08 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/24 13:15:02 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,16 @@ void	apply_command(t_parse *parse)
 	parse->command = COMMAND_NONE;
 }
 
+t_vec2	get_room_coords(const char *line)
+{
+	int		i;
+	t_vec2	coords;
 
+	i = 0;
+	i += ft_skipwhitespace(&line[i]);
+	coords.x = (float)ft_atoi(&line[i]);
+	i += ft_strspn(&line[i], DIGIT_STR);
+	i += ft_strspn(&line[i], WHITE_STR);
+	coords.y = (float)ft_atoi(&line[i]);
+	return (coords);
+}

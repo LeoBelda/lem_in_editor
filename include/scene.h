@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   scene.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/24 10:29:28 by lbelda            #+#    #+#             */
+/*   Updated: 2018/05/24 13:56:36 by lbelda           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCENE_H
 # define SCENE_H
 
@@ -95,6 +107,7 @@ typedef struct	s_scene
 
 t_mesh			create_room_model(void);
 
+void			init_gl_objects(t_scene *scene);
 t_glfloat2		*get_room_positions(t_list *rooms, int nb_rooms);
 t_glfloat2		*get_link_positions(t_list *links, int nb_links);
 

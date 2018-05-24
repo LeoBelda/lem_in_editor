@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clean_parse.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/24 10:30:13 by lbelda            #+#    #+#             */
+/*   Updated: 2018/05/24 13:33:12 by lbelda           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parse.h"
 
 static void	lstdel_moveparse(void *content, size_t size)
@@ -13,7 +25,7 @@ static void	lstdel_moveparse(void *content, size_t size)
 	free_pro((void**)&content);
 }
 
-void	clean_parse(t_parse parse)
+void		clean_parse(t_parse parse)
 {
 	ft_lstdel(&parse.turns, &lstdel_moveparse);
 }

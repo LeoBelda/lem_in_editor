@@ -6,14 +6,11 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 16:23:35 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/07 16:23:53 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/24 13:15:43 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-
-#define WHITE_STR " \t\v\f\r"
-#define DIGIT_STR "-0123456789"
 
 #define LK1 0
 #define LK2 1
@@ -115,11 +112,7 @@ int			parse_room(const char *line, t_parse *parse)
 	if (name_is_duplicate(name, parse->rooms))
 		return (LINE_MAP_BAD);
 	i = ft_strlen(name);
-	i += ft_skipwhitespace(&line[i]);
-	xy.x = (float)ft_atoi(&line[i]);
-	i += ft_strspn(&line[i], DIGIT_STR);
-	i += ft_strspn(&line[i], WHITE_STR);
-	xy.y = (float)ft_atoi(&line[i]);
+	xy = get_room_coords(&line[i]);
 	m_pro(ft_lstradd(&parse->rooms,
 		ft_lstnew(&((t_room){id, name, xy, NULL}), sizeof(t_room))));
 	ft_putendl(line);

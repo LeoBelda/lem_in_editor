@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_scene.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/24 10:27:32 by lbelda            #+#    #+#             */
+/*   Updated: 2018/05/24 13:32:54 by lbelda           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "map.h"
 #include "scene.h"
 
@@ -75,32 +87,28 @@ static void			init_room_buffers(t_scene scene, t_mesh mod)
 
 t_scene				init_scene(t_map map)
 {
-	t_scene	scene;
+	t_scene	s;
 
-	scene.programs[PROG_ROOM] = build_ogl_program(VTX_ROOM, FRG_ROOM);
-	scene.programs[PROG_LINK] = build_ogl_program(VTX_LINK, FRG_LINK);
-	scene.nb_rooms = map.nb_rooms;
-	scene.nb_links = map.nb_links;
-	scene.room_positions = get_room_positions(map.rooms, map.nb_rooms);
-	scene.link_positions = get_link_positions(map.links, map.nb_links);
-	scene.room_model = create_room_model();
-	scene.timeline = (t_timeline){0., 0., -1, map.nb_turns, 0.};
-	m_pro_null(scene.room_states = ft_memalloc(sizeof(t_vec2r) * scene.nb_rooms));
-	m_pro_null(scene.link_states = ft_memalloc(sizeof(GLfloat) * scene.nb_links * 2));
-	glGenVertexArrays(VAO_MAX, scene.vaos);
-	glGenBuffers(VBO_MAX, scene.vbos_room);
-	glGenBuffers(VBO_MAX_LK, scene.vbos_link);
-	glGenBuffers(IBO_MAX, scene.ibos);
-	glGenBuffers(UBO_MAX, scene.ubos);
-	init_uniforms(scene);
-	glUseProgram(scene.programs[PROG_ROOM]);
-	glBindVertexArray(scene.vaos[VAO_ROOM]);
-	init_room_buffers(scene, scene.room_model);
-	init_instances_buffers(scene);
-	glUseProgram(scene.programs[PROG_LINK]);
-	glBindVertexArray(scene.vaos[VAO_LINK]);
-	init_link_buffers(scene);
+	s.programs[PROG_ROOM] = build_ogl_program(VTX_ROOM, FRG_ROOM);
+	s.programs[PROG_LINK] = build_ogl_program(VTX_LINK, FRG_LINK);
+	s.nb_rooms = map.nb_rooms;
+	s.nb_links = map.nb_links;
+	s.room_positions = get_room_positions(map.rooms, map.nb_rooms);
+	s.link_positions = get_link_positions(map.links, map.nb_links);
+	s.room_model = create_room_model();
+	s.timeline = (t_timeline){0., 0., -1, map.nb_turns, 0.};
+	m_pro_null(s.room_states = ft_memalloc(sizeof(t_vec2r) * s.nb_rooms));
+	m_pro_null(s.link_states = ft_memalloc(sizeof(GLfloat) * s.nb_links * 2));
+	init_gl_objects(&s);
+	init_uniforms(s);
+	glUseProgram(s.programs[PROG_ROOM]);
+	glBindVertexArray(s.vaos[VAO_ROOM]);
+	init_room_buffers(s, s.room_model);
+	init_instances_buffers(s);
+	glUseProgram(s.programs[PROG_LINK]);
+	glBindVertexArray(s.vaos[VAO_LINK]);
+	init_link_buffers(s);
 	glUseProgram(0);
 	glBindVertexArray(0);
-	return (scene);
+	return (s);
 }

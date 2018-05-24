@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:12:46 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/24 10:05:32 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/24 13:34:02 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	render_links(t_scene scene)
 	glUseProgram(0);
 }
 
-int		render(t_env *e)
+int			render(t_env *e)
 {
 	while (!e->quit)
 	{

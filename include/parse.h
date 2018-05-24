@@ -1,9 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/24 10:29:20 by lbelda            #+#    #+#             */
+/*   Updated: 2018/05/24 13:15:39 by lbelda           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSE_H
 # define PARSE_H
 
 # include "objects.h"
 # include "libft.h"
 # include "common.h"
+
+# define WHITE_STR " \t\v\f\r"
+# define DIGIT_STR "-0123456789"
 
 enum			e_parse_funcs
 {
@@ -67,6 +82,7 @@ void			apply_command(t_parse *parse);
 int				link_is_duplicate(t_room *link, t_list *links);
 t_room			*look_for_room(const char *name, t_list *rooms);
 int				name_is_duplicate(const char *name, t_list *rooms);
+t_vec2			get_room_coords(const char *line);
 
 void			clean_parse(t_parse parse);
 
