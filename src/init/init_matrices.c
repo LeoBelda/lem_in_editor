@@ -35,8 +35,6 @@ static void	get_frustrum_bounds(t_vec2 *limits, float ratio)
 	float	mid;
 	float	dst;
 
-	ft_printf("x:%f %f, y:%f %f\n", limits[LIM_MIN].x, limits[LIM_MAX].x,
-					limits[LIM_MIN].y, limits[LIM_MAX].y);
 	if (limits[LIM_MAX].x - limits[LIM_MIN].x <
 			(limits[LIM_MAX].y - limits[LIM_MIN].y) * ratio)
 	{
@@ -58,8 +56,6 @@ static void	get_frustrum_bounds(t_vec2 *limits, float ratio)
 		limits[LIM_MIN].y = mid - dst / ratio;
 		limits[LIM_MAX].y = mid + dst / ratio;
 	}
-	ft_printf("x:%f %f, y:%f %f\n", limits[LIM_MIN].x, limits[LIM_MAX].x,
-					limits[LIM_MIN].y, limits[LIM_MAX].y);
 }
 
 t_matrices	init_matrices(t_map map, float ratio)
@@ -67,7 +63,6 @@ t_matrices	init_matrices(t_map map, float ratio)
 	t_matrices	matrices;
 	t_vec2		lim[4];
 
-	(void)ratio;
 	get_limits(map, lim);
 	get_frustrum_bounds(lim, ratio);
 	matrices.eye = (t_vec4){(lim[LIM_MIN].x + lim[LIM_MAX].x) / -2.,
@@ -79,7 +74,7 @@ t_matrices	init_matrices(t_map map, float ratio)
 	matrices.view_mat = look_at(matrices.eye, matrices.tar, matrices.up);
 	matrices.proj_mat = orthomat4new(ffrustrumnew(
 		(t_vec2){lim[LIM_MIN].x, lim[LIM_MAX].x},
-		(t_vec2){lim[LIM_MAX].y, lim[LIM_MIN].y},
+		(t_vec2){lim[LIM_MIN].y, lim[LIM_MAX].y},
 		(t_vec2){100., -100.}));
 	//matrices.proj_mat = persmat4new(110., 78., 1000., 1.0);
 	matrices.final_mat = mat4xmat4(matrices.proj_mat, matrices.view_mat);
