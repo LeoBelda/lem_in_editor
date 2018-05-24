@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 16:24:08 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/24 13:15:02 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/24 16:38:51 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ int		link_is_duplicate(t_room *link, t_list *links)
 void	apply_command(t_parse *parse)
 {
 	if (parse->command == COMMAND_START)
-		parse->start = (t_room*)parse->rooms->content;
+		parse->start = ft_lstat(parse->rooms,
+				ft_lstcount(parse->rooms) - 1)->content;
 	else if (parse->command == COMMAND_END)
-		parse->end = (t_room*)parse->rooms->content;
+		parse->end = ft_lstat(parse->rooms,
+				ft_lstcount(parse->rooms) - 1)->content;
 	parse->command = COMMAND_NONE;
 }
 
