@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:12:58 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/02 14:49:16 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/25 08:04:04 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,20 @@ static void	search_kb_lookup(t_env *e, SDL_Keycode sym, int type)
 	}
 }
 
+static void	search_ms_lookup(t_env *e, SDL_MouseButtonEvent ms)
+{
+	int	i;
+
+	i = -1;
+	while (++i < MS_MAX)
+	{
+		if (e->controls.ms_lookup[i].button == ms.button)
+		{
+			e->controls.ms_lookup[i].func(e, ms.type, ms.x, ms.y);
+			break ;
+		}
+	}
+}
 void		handle_events(t_env *e)
 {
 	SDL_Event	event;
@@ -36,5 +50,8 @@ void		handle_events(t_env *e)
 	{
 		if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
 			search_kb_lookup(e, event.key.keysym.sym, event.type);
+		else if (event.type == SDL_MOUSEBUTTONDOWN ||
+				event.type == SDL_MOUSEBUTTONUP)
+			search_ms_lookup(e, event.button);
 	}
 }

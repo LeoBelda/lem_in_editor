@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:16:07 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 03:57:24 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/25 05:12:01 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static t_controls	controls_edit(void)
 
 	controls.ms_lookup[MS_RIGHT] = (t_ms_lookup){SDL_BUTTON_RIGHT, &ms_create};
 	controls.ms_lookup[MS_LEFT] = (t_ms_lookup){SDL_BUTTON_LEFT, &ms_grab};
+	controls.kb_lookup[KB_ESCAPE] = (t_kb_lookup){SDLK_ESCAPE, &kb_quit};
 	return (controls);
 }
 

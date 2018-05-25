@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:12:46 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/24 13:34:02 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/25 17:53:03 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int			render(t_env *e)
 	{
 		handle_events(e);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		update_turns(&e->scene, e->map);
+		if (e->mode == V_VISU)
+			update_turns(&e->scene, e->map);
+		else
+			e->scene.ratio = 0.5;
 		update_uniforms(e->scene, e->matrices);
 		render_rooms(e->scene);
 		render_links(e->scene);

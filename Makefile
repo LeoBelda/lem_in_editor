@@ -7,7 +7,8 @@ PARSE_FILES=parse.c parse_to_map.c \
 			parse_funcs.c parse_funcs_spe.c parse_utils.c clean_parse.c
 
 INIT_DIR=init/
-INIT_FILES=init_context.c init_controls.c init_scene.c init_matrices.c\
+INIT_FILES=init_context.c init_controls.c init_matrices.c \
+		   init_scene.c init_scene_edit.c \
 		   create_room_model.c init_scene_helpers.c
 
 GRAPHICS_DIR=graphics/
@@ -15,7 +16,7 @@ GRAPHICS_FILES=render.c update_uniforms.c update_turns.c
 CONTROLS_DIR=controls/
 CONTROLS_FILES=handle_events.c \
 			   kb_misc.c kb_forward.c kb_play.c \
-			   ms_main.c
+			   ms_main.c ms_utils.c
 
 UTILS_DIR=utils/
 UTILS_FILES=ogl_utils.c build_ogl_program.c \

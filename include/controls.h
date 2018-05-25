@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:28:41 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 03:58:44 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/25 07:30:14 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct	s_kb_lookup
 typedef struct	s_ms_lookup
 {
 	uint8_t		button;
-	void		(*func)(void *e, int type);
+	void		(*func)(void *e, int type, int x, int y);
 }				t_ms_lookup;
 
 typedef struct	s_controls
@@ -65,7 +65,7 @@ void			kb_quit(void *e, int type);
 void			kb_debug(void *e, int type);
 void			kb_none(void *e, int type);
 
-void			ms_create(void *e, int type);
-void			ms_grab(void *e, int type);
+void			ms_create(void *e, int type, int x, int y);
+void			ms_grab(void *e, int type, int x, int y);
 
 #endif

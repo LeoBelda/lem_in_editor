@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 09:58:41 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 04:17:36 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/25 08:04:04 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef enum	e_mode
 
 typedef struct	s_env
 {
+	int				deb;
 	SDL_Window		*win;
 	t_map			map;
 	t_scene			scene;
@@ -67,12 +68,15 @@ void			lem_in_visu(t_mode mode);
 t_map			parse_to_map(t_parse parse);
 void			init_env(t_env *e);
 t_scene			init_scene(t_map map);
+t_scene			init_scene_edit(t_map map);
 t_controls		init_controls(t_mode mode);
 t_matrices		init_matrices(t_map map, float ratio, t_vec2 win, t_mode mode);
 
 int				render(t_env *e);
 void			update_uniforms(t_scene scene, t_matrices mat);
 void			update_turns(t_scene *scene, t_map map);
+
+void			refresh_rooms(t_scene *scene, t_map map);
 
 void			handle_events(t_env *e);
 

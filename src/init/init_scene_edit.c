@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:27:32 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 07:35:35 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/25 18:04:47 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void			init_link_buffers(t_scene scene)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_link[VBO_MODEL_COORDS_LK]);
 	glBufferData(GL_ARRAY_BUFFER,
-				sizeof(t_glfloat2) * scene.nb_links * 2,
-				scene.link_positions, GL_STATIC_DRAW);
+				sizeof(t_glfloat2) * E_LINK_MAX * 2,
+				scene.link_positions, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(VBO_MODEL_COORDS_LK);
 	glVertexAttribPointer(VBO_MODEL_COORDS_LK, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_link[VBO_STATE_LK]);
@@ -59,14 +59,14 @@ static void			init_instances_buffers(t_scene scene)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_room[VBO_TRANS]);
 	glBufferData(GL_ARRAY_BUFFER,
-			scene.nb_rooms * sizeof(GLfloat) * 2,
-			scene.room_positions, GL_STATIC_DRAW);
+			E_ROOM_MAX * sizeof(GLfloat) * 2,
+			scene.room_positions, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(VBO_TRANS);
 	glVertexAttribPointer(VBO_TRANS, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 	glVertexAttribDivisor(VBO_TRANS, 1);
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_room[VBO_STATE]);
 	glBufferData(GL_ARRAY_BUFFER,
-			scene.nb_rooms * sizeof(GLint) * 2,
+			E_ROOM_MAX * sizeof(GLint) * 2,
 			NULL, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(VBO_STATE);
 	glVertexAttribPointer(VBO_STATE, 2, GL_INT, GL_FALSE, 0, NULL);
@@ -87,20 +87,19 @@ static void			init_room_buffers(t_scene scene, t_mesh mod)
 			mod.indices, GL_STATIC_DRAW);
 }
 
-t_scene				init_scene(t_map map)
+t_scene				init_scene_edit(t_map map)
 {
 	t_scene	s;
 
 	s.programs[PROG_ROOM] = build_ogl_program(VTX_ROOM, FRG_ROOM);
 	s.programs[PROG_LINK] = build_ogl_program(VTX_LINK, FRG_LINK);
-	s.nb_rooms = map.nb_rooms;
-	s.nb_links = map.nb_links;
-	s.room_positions = get_room_positions(map.rooms, map.nb_rooms);
-	s.link_positions = get_link_positions(map.links, map.nb_links);
+	s.nb_rooms = 0;
+	s.nb_links = 0;
+	m_pro_null(s.room_positions = ft_memalloc(sizeof(t_vec2) * E_ROOM_MAX));
+	m_pro_null(s.room_states = ft_memalloc(sizeof(GLint) * E_ROOM_MAX));
+	m_pro_null(s.link_positions = ft_memalloc(sizeof(GLfloat) * E_LINK_MAX * 2));
 	s.room_model = create_room_model();
 	s.timeline = (t_timeline){0., 0., -1, map.nb_turns, 0.};
-	m_pro_null(s.room_states = ft_memalloc(sizeof(t_vec2r) * s.nb_rooms));
-	m_pro_null(s.link_states = ft_memalloc(sizeof(GLfloat) * s.nb_links * 2));
 	init_gl_objects(&s);
 	init_uniforms(s);
 	glUseProgram(s.programs[PROG_ROOM]);
