@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:28:41 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/24 10:28:42 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/25 03:58:44 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,30 @@ enum			e_kb_funcs
 	KB_MAX
 };
 
+enum			e_ms_funcs
+{
+	MS_RIGHT,
+	MS_LEFT,
+	MS_MAX
+};
+
 typedef struct	s_kb_lookup
 {
 	SDL_Keycode	sym;
 	void		(*func)(void *e, int type);
 }				t_kb_lookup;
 
+typedef struct	s_ms_lookup
+{
+	uint8_t		button;
+	void		(*func)(void *e, int type);
+}				t_ms_lookup;
+
 typedef struct	s_controls
 {
 	t_kb_lookup			kb_lookup[KB_MAX];
+	t_ms_lookup			ms_lookup[MS_MAX];
 }				t_controls;
-
-t_controls		init_controls(void);
 
 void			kb_forward(void *e, int type);
 void			kb_backward(void *e, int type);
@@ -52,5 +64,8 @@ void			kb_play(void *e, int type);
 void			kb_quit(void *e, int type);
 void			kb_debug(void *e, int type);
 void			kb_none(void *e, int type);
+
+void			ms_create(void *e, int type);
+void			ms_grab(void *e, int type);
 
 #endif

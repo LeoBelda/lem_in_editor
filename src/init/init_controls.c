@@ -6,13 +6,14 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:16:07 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/02 14:48:55 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/25 03:57:24 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "controls.h"
+#include "visu.h"
 
-t_controls	init_controls(void)
+static t_controls	controls_visu(void)
 {
 	t_controls	controls;
 
@@ -28,4 +29,18 @@ t_controls	init_controls(void)
 	controls.kb_lookup[KB_SPACE] = (t_kb_lookup){SDLK_SPACE, &kb_play};
 	controls.kb_lookup[KB_ESCAPE] = (t_kb_lookup){SDLK_ESCAPE, &kb_quit};
 	return (controls);
+}
+
+static t_controls	controls_edit(void)
+{
+	t_controls controls;
+
+	controls.ms_lookup[MS_RIGHT] = (t_ms_lookup){SDL_BUTTON_RIGHT, &ms_create};
+	controls.ms_lookup[MS_LEFT] = (t_ms_lookup){SDL_BUTTON_LEFT, &ms_grab};
+	return (controls);
+}
+
+t_controls	init_controls(t_mode mode)
+{
+	return (mode == V_VISU ? controls_visu() : controls_edit());
 }

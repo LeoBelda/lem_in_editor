@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ms_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/25 09:51:53 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 03:33:07 by lbelda           ###   ########.fr       */
+/*   Created: 2018/05/25 03:57:49 by lbelda            #+#    #+#             */
+/*   Updated: 2018/05/25 03:58:55 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "common.h"
+#include "visu.h"
 
-void	error_exit(const char *str)
+void	ms_create(void *e, int type)
 {
-	ft_putstr_fd("visu:ERR: ", 2);
-	ft_putendl_fd(str, 2);
-	exit(EXIT_FAILURE);
+	(void)e;
+	(void)type;
 }
 
-void	usage_exit(void)
+void	ms_grab(void *e, int type)
 {
-	ft_putendl_fd("usage: ./visu [-e]", 2);
-	exit(EXIT_FAILURE);
+	(void)e;
+	(void)type;
 }
