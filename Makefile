@@ -15,7 +15,7 @@ GRAPHICS_FILES=render.c update_uniforms.c update_turns.c
 CONTROLS_DIR=controls/
 CONTROLS_FILES=handle_events.c \
 			   kb_misc.c kb_forward.c kb_play.c \
-			   ms_create.c ms_grab.c
+			   ms_main.c
 
 UTILS_DIR=utils/
 UTILS_FILES=ogl_utils.c build_ogl_program.c \

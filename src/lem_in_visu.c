@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:27:46 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 03:39:56 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/25 04:17:14 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ void	lem_in_visu(t_mode mode)
 	{
 		p = parse();
 		e.map = parse_to_map(p);
+		clean_parse(p);
 	}
-	e.controls = init_controls();
-	clean_parse(p);
+	e.controls = init_controls(mode);
 	init_env(&e);
-	e.matrices = init_matrices(e.map, e.ratio);
+	e.matrices = init_matrices(e.map, e.ratio,
+							(t_vec2){e.x_win, e.y_win}, mode);
 	e.scene = init_scene(e.map);
 	render(&e);
 }

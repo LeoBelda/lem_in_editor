@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:27:28 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/24 13:43:03 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/25 04:12:34 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	get_frustrum_bounds(t_vec2 *limits, float ratio)
 	}
 }
 
-t_matrices	init_matrices(t_map map, float ratio)
+t_matrices	init_matrices(t_map map, float ratio, t_vec2 win, t_mode mode)
 {
 	t_matrices	matrices;
 	t_vec2		lim[4];
@@ -84,11 +84,12 @@ t_matrices	init_matrices(t_map map, float ratio)
 	matrices.up = (t_vec4){0., 1., 0., 0.};
 	matrices.model_scale = sclmat4new(0.2, 0.2, 0.2);
 	matrices.view_mat = look_at(matrices.eye, matrices.tar, matrices.up);
-	matrices.proj_mat = orthomat4new(ffrustrumnew(
+	matrices.proj_mat = (mode == V_VISU ? orthomat4new(ffrustrumnew(
 		(t_vec2){lim[LIM_MIN].x, lim[LIM_MAX].x},
 		(t_vec2){lim[LIM_MIN].y, lim[LIM_MAX].y},
-		(t_vec2){100., -100.}));
-	//matrices.proj_mat = persmat4new(110., 78., 1000., 1.0);
+		(t_vec2){100., -100.}))
+			: orthomat4new(ffrustrumnew((t_vec2){0., win.x},
+					(t_vec2){0., win.y}, (t_vec2){100., -100.})));
 	matrices.final_mat = mat4xmat4(matrices.proj_mat, matrices.view_mat);
 	return (matrices);
 }

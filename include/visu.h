@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 09:58:41 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 03:57:01 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/25 04:17:36 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ typedef struct	s_env
 	int				x_win;
 	int				y_win;
 	float			ratio;
-	t_mode			mode;
 	int				quit;
+	t_mode			mode;
 }				t_env;
 
 void			lem_in_visu(t_mode mode);
@@ -68,7 +68,7 @@ t_map			parse_to_map(t_parse parse);
 void			init_env(t_env *e);
 t_scene			init_scene(t_map map);
 t_controls		init_controls(t_mode mode);
-t_matrices		init_matrices(t_map map, float ratio);
+t_matrices		init_matrices(t_map map, float ratio, t_vec2 win, t_mode mode);
 
 int				render(t_env *e);
 void			update_uniforms(t_scene scene, t_matrices mat);
