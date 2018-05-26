@@ -37,6 +37,7 @@ SRC=mat4_interi.c \
 	norm_vec4.c \
 	vec4_xy_distance.c \
 	vec4_xz_distance.c \
+	vec2_distance.c \
 	vec4xvec4.c \
 	mat4xvec4.c \
 	vec4xmat4.c \

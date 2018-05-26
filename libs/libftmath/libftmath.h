@@ -97,6 +97,7 @@ float			dot_product(t_vec4 a, t_vec4 b);
 t_vec4			norm_vec4(t_vec4 vec);
 float			vec4_xy_distance(t_vec4 a, t_vec4 b);
 float			vec4_xz_distance(t_vec4 a, t_vec4 b);
+float			vec2_distance(t_vec2 a, t_vec2 b);
 float			vec4xvec4(t_vec4 a, t_vec4 b);
 t_vec4			mat4xvec4(t_mat4 mat, t_vec4 vec);
 t_vec4			vec4xmat4(t_vec4 vec, t_mat4 mat);

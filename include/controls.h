@@ -14,6 +14,7 @@
 # define CONTROLS_H
 
 # include "SDL.h"
+# include "objects.h"
 
 # define TM_INC 0.02
 
@@ -52,10 +53,17 @@ typedef struct	s_ms_lookup
 	void		(*func)(void *e, int type, int x, int y);
 }				t_ms_lookup;
 
+typedef union	u_object
+{
+	t_room	*room;
+	t_link	*link;
+}				t_object;
+
 typedef struct	s_controls
 {
 	t_kb_lookup			kb_lookup[KB_MAX];
 	t_ms_lookup			ms_lookup[MS_MAX];
+	t_object			attached;
 }				t_controls;
 
 void			kb_forward(void *e, int type);
@@ -67,5 +75,6 @@ void			kb_none(void *e, int type);
 
 void			ms_create(void *e, int type, int x, int y);
 void			ms_grab(void *e, int type, int x, int y);
+void			ms_bound_object(void *e, SDL_MouseMotionEvent motion);
 
 #endif

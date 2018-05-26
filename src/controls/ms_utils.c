@@ -12,6 +12,31 @@
 
 #include "visu.h"
 
+#define SENSITIVITY 30
+
+t_room	*find_closest_room(t_list *rooms, t_vec2 mouse)
+{
+	t_room	*closest;
+	t_room	*cur;
+	float	min_dst;
+	float	dst;
+
+	closest = NULL;
+	min_dst = 10000.;
+	while (rooms)
+	{
+		cur = (t_room*)rooms->content;
+		dst = vec2_distance(mouse, cur->coords);
+		if (dst < min_dst && dst < SENSITIVITY)
+		{
+			closest = cur;
+			min_dst = dst;
+		}
+		rooms = rooms->next;
+	}
+	return (closest);
+}
+
 void	refresh_rooms(t_scene *scene, t_map map)
 {
 	int			i;

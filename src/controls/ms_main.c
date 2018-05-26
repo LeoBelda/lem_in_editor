@@ -31,8 +31,29 @@ void	ms_create(void *e, int type, int x, int y)
 
 void	ms_grab(void *e, int type, int x, int y)
 {
-	(void)e;
-	(void)type;
-	(void)x;
-	(void)y;
+	t_env		*env;
+
+	env = (t_env*)e;
+	if (type == SDL_MOUSEBUTTONDOWN)
+	{
+		env->controls.attached.room = find_closest_room(env->map.rooms,
+								(t_vec2){(float)x, (float)y});
+	}
+	else
+	{
+		env->controls.attached.room = NULL;
+	}
+}
+
+void	ms_bound_object(void *e, SDL_MouseMotionEvent motion)
+{
+	t_env		*env;
+
+	env = (t_env*)e;
+	if (motion.state & SDL_BUTTON_LMASK && env->controls.attached.room)
+	{
+		env->controls.attached.room->coords = (t_vec2){(float)motion.x,
+													(float)motion.y};
+		refresh_rooms(&env->scene, env->map);
+	}
 }

@@ -16,7 +16,7 @@
 
 #define VOID_RATIO 0.20
 
-#define SCALE 0.02
+#define SCALE 0.013
 
 #define LIM_MIN 0
 #define LIM_MAX 1
@@ -96,7 +96,7 @@ t_matrices	init_matrices(t_map map, float ratio, t_vec2 win, t_mode mode)
 	matrices.view_mat = look_at(matrices.eye, matrices.tar, matrices.up);
 	matrices.proj_mat = orthomat4new(ffrustrumnew(
 		(t_vec2){lim[LIM_MIN].x, lim[LIM_MAX].x},
-		(t_vec2){lim[LIM_MIN].y, lim[LIM_MAX].y},
+		(t_vec2){lim[LIM_MAX].y, lim[LIM_MIN].y},
 		(t_vec2){100., -100.}));
 	matrices.final_mat = mat4xmat4(matrices.proj_mat, matrices.view_mat);
 	return (matrices);

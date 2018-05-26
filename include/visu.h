@@ -77,6 +77,7 @@ void			update_uniforms(t_scene scene, t_matrices mat);
 void			update_turns(t_scene *scene, t_map map);
 
 void			refresh_rooms(t_scene *scene, t_map map);
+t_room			*find_closest_room(t_list *rooms, t_vec2 mouse);
 
 void			handle_events(t_env *e);
 
