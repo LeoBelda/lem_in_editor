@@ -6,8 +6,9 @@ out vec4	fragColor;
 uniform matrixBlock
 {
 	mat4 projView;
+	float scale;
 	float ratio;
-}matrices;
+}mat;
 
 void	main()
 {

@@ -6,15 +6,16 @@ layout(location = 1) in float state;
 uniform matrixBlock
 {
 	mat4 projView;
+	float scale;
 	float ratio;
-}matrices;
+}mat;
 
 out float f_state;
 
 void	main()
 {
 	float t_state;
-	gl_Position = matrices.projView * vec4(pos, 0.0, 1.0);
-	t_state = state * matrices.ratio;
+	gl_Position = mat.projView * vec4(pos, 0.0, 1.0);
+	t_state = state * mat.ratio;
 	f_state = state;
 }

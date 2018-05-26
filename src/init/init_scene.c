@@ -34,7 +34,7 @@ static void			init_uniforms(t_scene scene)
 	}
 	glBindBuffer(GL_UNIFORM_BUFFER, scene.ubos[UBO_0]);
 	glBindBufferBase(GL_UNIFORM_BUFFER, U_BINDING1, scene.ubos[UBO_0]);
-	glBufferData(GL_UNIFORM_BUFFER, sizeof(t_mat4) + sizeof(float),
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(t_mat4) + sizeof(float) * 2.,
 									NULL, GL_STREAM_DRAW);
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
