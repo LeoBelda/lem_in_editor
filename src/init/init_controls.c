@@ -35,8 +35,10 @@ static t_controls	controls_edit(void)
 {
 	t_controls controls;
 
-	controls.ms_lookup[MS_RIGHT] = (t_ms_lookup){SDL_BUTTON_RIGHT, &ms_create};
-	controls.ms_lookup[MS_LEFT] = (t_ms_lookup){SDL_BUTTON_LEFT, &ms_grab};
+	controls.attached.room = NULL;
+	controls.which = MS_A_NONE;
+	controls.ms_lookup[MS_RIGHT] = (t_ms_lookup){SDL_BUTTON_RIGHT, &ms_room};
+	controls.ms_lookup[MS_LEFT] = (t_ms_lookup){SDL_BUTTON_LEFT, &ms_bind};
 	controls.kb_lookup[KB_ESCAPE] = (t_kb_lookup){SDLK_ESCAPE, &kb_quit};
 	return (controls);
 }

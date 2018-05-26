@@ -54,6 +54,6 @@ void		handle_events(t_env *e)
 				event.type == SDL_MOUSEBUTTONUP)
 			search_ms_lookup(e, event.button);
 		else if (event.type == SDL_MOUSEMOTION)
-			ms_bound_object(e, event.motion);
+			ms_move(e, event.motion);
 	}
 }

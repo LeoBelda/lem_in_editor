@@ -37,21 +37,37 @@ t_room	*find_closest_room(t_list *rooms, t_vec2 mouse)
 	return (closest);
 }
 
-void	refresh_rooms(t_scene *scene, t_map map)
+void	refresh_rooms_from(t_scene *scene, t_map map, int id)
 {
+	t_list		*target;
 	int			i;
 
-	i = 0;
-	while (map.rooms)
+	i = id - 1;
+	target = ft_lstat(map.rooms, id - 1);
+	while (target)
 	{
 		scene->room_positions[i] =
-			(t_glfloat2) {((t_room*)map.rooms->content)->coords.x,
-							((t_room*)map.rooms->content)->coords.y};
-		map.rooms = map.rooms->next;
+			(t_glfloat2) {((t_room*)(target->content))->coords.x,
+						((t_room*)(target->content))->coords.y};
 		i++;
+		target = target->next;
 	}
 	glBindBuffer(GL_ARRAY_BUFFER, scene->vbos_room[VBO_TRANS]);
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(GLfloat) * 2 * scene->nb_rooms,
-								scene->room_positions);
+	glBufferSubData(GL_ARRAY_BUFFER, sizeof(GLfloat) * (id - 1) * 2,
+			sizeof(GLfloat) * 2 * (i - (id - 1)),
+				&scene->room_positions[id - 1]);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void	refresh_room(t_scene *scene, t_map map, int id)
+{
+	t_room		*target;
+
+	target = (t_room*)(ft_lstat(map.rooms, id - 1)->content);
+	scene->room_positions[id - 1] =
+			(t_glfloat2) {target->coords.x, target->coords.y};
+	glBindBuffer(GL_ARRAY_BUFFER, scene->vbos_room[VBO_TRANS]);
+	glBufferSubData(GL_ARRAY_BUFFER, sizeof(GLfloat) * (id - 1) * 2,
+			sizeof(GLfloat) * 2, &scene->room_positions[id - 1]);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

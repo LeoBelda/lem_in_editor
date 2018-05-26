@@ -11,9 +11,16 @@
 /* ************************************************************************** */
 
 #include "parse.h"
+#include "objects.h"
 
 void	lstdel_moveparse(void *content, size_t size)
 {
 	(void)size;
 	free_pro((void**)&(((t_moveparse*)content)->name));
+}
+
+void	lstdel_room(void *content, size_t size)
+{
+	(void)size;
+	free_pro((void**)&(((t_room*)content)->name));
 }

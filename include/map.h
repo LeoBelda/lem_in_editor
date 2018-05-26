@@ -36,4 +36,6 @@ typedef struct	s_map
 	t_room	*end;
 }				t_map;
 
+void			lstdel_room(void *content, size_t size);
+
 #endif

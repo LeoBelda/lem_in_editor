@@ -16,11 +16,11 @@ GRAPHICS_FILES=render.c update_uniforms.c update_turns.c
 CONTROLS_DIR=controls/
 CONTROLS_FILES=handle_events.c \
 			   kb_misc.c kb_forward.c kb_play.c \
-			   ms_main.c ms_utils.c
+			   ms_room.c ms_bind.c ms_move.c ms_utils.c
 
 UTILS_DIR=utils/
 UTILS_FILES=ogl_utils.c build_ogl_program.c \
-			clean_env.c \
+			clean_env.c lstdels.c \
 			error.c protec.c debug.c
 
 SRC_DIRS=$(PARSE_DIR) $(INIT_DIR) $(GRAPHICS_DIR) $(UTILS_DIR) $(CONTROLS_DIR)

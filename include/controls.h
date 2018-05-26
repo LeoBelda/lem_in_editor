@@ -15,6 +15,8 @@
 
 # include "SDL.h"
 # include "objects.h"
+# include "map.h"
+# include "scene.h"
 
 # define TM_INC 0.02
 
@@ -41,6 +43,13 @@ enum			e_ms_funcs
 	MS_MAX
 };
 
+enum			e_ms_attached
+{
+	MS_A_NONE,
+	MS_A_ROOM,
+	MS_A_LINK
+}				t_ms_attached;
+
 typedef struct	s_kb_lookup
 {
 	SDL_Keycode	sym;
@@ -55,8 +64,8 @@ typedef struct	s_ms_lookup
 
 typedef union	u_object
 {
-	t_room	*room;
-	t_link	*link;
+	t_room				*room;
+	t_link				*link;
 }				t_object;
 
 typedef struct	s_controls
@@ -64,6 +73,7 @@ typedef struct	s_controls
 	t_kb_lookup			kb_lookup[KB_MAX];
 	t_ms_lookup			ms_lookup[MS_MAX];
 	t_object			attached;
+	enum e_ms_attached	which;
 }				t_controls;
 
 void			kb_forward(void *e, int type);
@@ -73,8 +83,12 @@ void			kb_quit(void *e, int type);
 void			kb_debug(void *e, int type);
 void			kb_none(void *e, int type);
 
-void			ms_create(void *e, int type, int x, int y);
-void			ms_grab(void *e, int type, int x, int y);
-void			ms_bound_object(void *e, SDL_MouseMotionEvent motion);
+void			ms_room(void *e, int type, int x, int y);
+void			ms_bind(void *e, int type, int x, int y);
+void			ms_move(void *e, SDL_MouseMotionEvent motion);
+
+void			refresh_room(t_scene *scene, t_map map, int id);
+void			refresh_rooms_from(t_scene *scene, t_map map, int id);
+t_room			*find_closest_room(t_list *rooms, t_vec2 mouse);
 
 #endif
