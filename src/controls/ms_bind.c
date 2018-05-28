@@ -8,9 +8,9 @@ void	ms_bind(void *e, int type, int x, int y)
 	env = (t_env*)e;
 	if (type == SDL_MOUSEBUTTONDOWN && SDL_GetModState() & KMOD_CTRL)
 	{
-		env->controls.attached.room = find_closest_room(env->map.rooms,
-								(t_vec2){(float)x, (float)y});
-		env->controls.which = MS_A_ROOM;
+		if ((env->controls.attached.room = find_closest_room(env->map.rooms,
+								(t_vec2){(float)x, (float)y})))
+			env->controls.which = MS_A_ROOM;
 	}
 	else
 	{
