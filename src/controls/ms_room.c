@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 13:55:55 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 13:56:26 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 14:37:14 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,6 @@ static void	remove_room(t_room *del, t_list **rooms)
 		elem = elem->next;
 	}
 	ft_lstdel_n(rooms, del->id - 1, &lstdel_room);
-}
-
-static void	remove_link_dep(t_list **links, int id)
-{
-	t_list	*tmp;
-	int		i;
-
-	i = 0;
-	tmp = *links;
-	while (tmp)
-	{
-		if (id == ((t_link*)(tmp->content))->id)
-			break ;
-		tmp = tmp->next;
-		i++;
-	}
-	ft_lstdel_n(links, i, lstdel_linkref);
 }
 
 static void	remove_related_links(t_env *e, t_room *del)
