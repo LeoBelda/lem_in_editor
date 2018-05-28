@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 13:07:50 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 10:49:31 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 13:50:12 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,17 @@ void	lstdel_room(void *content, size_t size)
 {
 	(void)size;
 	free_pro((void**)&(((t_room*)content)->name));
+	free_pro((void**)&content);
+}
+
+void	lstdel_linkref(void *content, size_t size)
+{
+	(void)size;
+	(void)content;
 }
 
 void	lstdel_link(void *content, size_t size)
 {
-	(void)content;
 	(void)size;
+	free_pro((void**)&content);
 }

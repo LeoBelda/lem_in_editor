@@ -36,7 +36,7 @@ static void	remove_link_dep(t_list **links, int id)
 		tmp = tmp->next;
 		i++;
 	}
-	ft_lstdel_n(links, i, lstdel_link);
+	ft_lstdel_n(links, i, lstdel_linkref);
 }
 
 static void	remove_related_links(t_env *e, t_room *del)
@@ -50,11 +50,11 @@ static void	remove_related_links(t_env *e, t_room *del)
 				((t_link*)(del->links->content))->b
 				: ((t_link*)(del->links->content))->a);
 		remove_link_dep(&dep->links, ((t_link*)(del->links->content))->id);
-		ft_lstdel_n(&e->map.links, ((t_link*)(del->links->content))->id - 1,
-							lstdel_link);
 		e->scene.nb_links--;
 		tmp = del->links;
 		del->links = del->links->next;
+		ft_lstdel_n(&e->map.links, ((t_link*)(tmp->content))->id - 1,
+							lstdel_link);
 		free_pro((void**)&tmp);
 	}
 	refresh_all_links(&e->scene, e->map);
