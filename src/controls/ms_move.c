@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 03:57:49 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 10:30:06 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 11:12:00 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ms_move(void *e, SDL_MouseMotionEvent motion)
 		env->controls.attached.room->coords = (t_vec2){(float)motion.x,
 													(float)motion.y};
 		refresh_room(&env->scene, env->map, env->controls.attached.room->id);
+		refresh_related_links(&env->scene, env->map,
+				env->controls.attached.room->links);
 	}
 	else if ((motion.state & SDL_BUTTON_LMASK) &&
 							env->controls.which == MS_A_LINK)

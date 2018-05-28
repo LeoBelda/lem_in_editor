@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:28:41 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 09:54:04 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 11:45:51 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,11 @@ void			ms_move(void *e, SDL_MouseMotionEvent motion);
 void			refresh_room(t_scene *scene, t_map map, int id);
 void			refresh_rooms_from(t_scene *scene, t_map map, int id);
 t_room			*find_closest_room(t_list *rooms, t_vec2 mouse);
+
 void			refresh_link(t_scene *scene, t_map map, int id,
 										t_vec2 b_coords);
+void			refresh_related_links(t_scene *scene, t_map map,
+											t_list *links);
+void			refresh_all_links(t_scene *scene, t_map map);
 
 #endif
