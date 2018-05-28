@@ -15,11 +15,12 @@ GRAPHICS_DIR=graphics/
 GRAPHICS_FILES=render.c update_uniforms.c update_turns.c
 CONTROLS_DIR=controls/
 CONTROLS_FILES=handle_events.c \
-			   kb_misc.c kb_forward.c kb_play.c \
+			   kb_misc.c kb_forward.c kb_play.c kb_startend.c \
 			   ms_room.c ms_bind.c ms_move.c ms_utils.c ms_utils_link.c
 
 UTILS_DIR=utils/
 UTILS_FILES=ogl_utils.c build_ogl_program.c \
+			print_map.c \
 			clean_env.c lstdels.c \
 			error.c protec.c debug.c
 

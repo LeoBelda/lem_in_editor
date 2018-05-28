@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:28:48 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 13:52:03 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 15:41:13 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct	s_map
 	t_room	*start;
 	t_room	*end;
 }				t_map;
+
+void			print_map(t_map map);
 
 void			lstdel_room(void *content, size_t size);
 void			lstdel_link(void *content, size_t size);

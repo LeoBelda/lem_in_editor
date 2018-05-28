@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 09:33:43 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 14:53:43 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 15:02:06 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	delete_link(t_env *e, t_link *del)
 	e->scene.nb_links--;
 	ft_lstdel_n(&e->map.links, del->id - 1, lstdel_link);
 	refresh_all_links(&e->scene, e->map);
-	ft_putendl("bro");
 }
 
 static void	finalize_link(t_env *e, t_vec2 coords)

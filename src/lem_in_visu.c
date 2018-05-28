@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:27:46 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 07:51:03 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 16:33:41 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	lem_in_visu(t_mode mode)
 	if (mode == V_VISU)
 	{
 		p = parse();
-		e.map = parse_to_map(p);
+		if (p.start && p.end)
+			e.map = parse_to_map(p);
+		else
+			error_exit("map error: missing start or end");
 		clean_parse(p);
 	}
 	e.controls = init_controls(mode);

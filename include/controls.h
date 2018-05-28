@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:28:41 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 14:40:37 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 15:15:08 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ enum			e_kb_funcs
 	KB_S,
 	KB_W,
 	KB_P,
+	KB_E,
 	KB_SPACE,
 	KB_ESCAPE,
 	KB_MAX
@@ -79,6 +80,8 @@ typedef struct	s_controls
 void			kb_forward(void *e, int type);
 void			kb_backward(void *e, int type);
 void			kb_play(void *e, int type);
+void			kb_start(void *e, int type);
+void			kb_end(void *e, int type);
 void			kb_quit(void *e, int type);
 void			kb_debug(void *e, int type);
 void			kb_none(void *e, int type);

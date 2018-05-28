@@ -19,12 +19,12 @@ void	main()
 	vec4 position = vec4((pos * mat.scale + vec3(i_trans, 0.)), 1.0);
 	gl_Position = mat.projView * position;
 
-	if (mat.ratio < 0.5 && i_state.x != 0)
+	if (mat.ratio < 0.5 && i_state.x > 0)
 	{
 		t_ratio = mat.ratio * 2.;
 		vtxColor = vec4(1.0, t_ratio, t_ratio, 1.0);
 	}
-	else if (mat.ratio >= 0.5 && i_state.y != 0)
+	else if (mat.ratio >= 0.5 && i_state.y > 0)
 	{
 		t_ratio = (mat.ratio - 0.5) * 2.;
 		vtxColor = vec4(1.0, 1. - t_ratio, 1. - t_ratio, 1.0);

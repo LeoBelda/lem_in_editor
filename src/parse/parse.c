@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:30:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/24 16:39:21 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 16:27:55 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_parse		parse(void)
 	t_parse	parse;
 
 	line = NULL;
-	valid_line = 1;
+	valid_line = LINE_OK;
 	ft_bzero(&parse, sizeof(t_parse));
 	init_p_funcs(parse.p_funcs);
 	parse.mode = M_MAP;
