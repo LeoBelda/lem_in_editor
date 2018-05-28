@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 09:33:43 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 15:02:06 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 17:31:50 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static void	finalize_link(t_env *e, t_vec2 coords)
 	else
 	{
 		e->controls.attached.link->b = target;
-		refresh_link(&e->scene, e->map,	e->controls.attached.link->id,
-						e->controls.attached.link->b->coords);
+		refresh_link(&e->scene, e->map, e->controls.attached.link->id,
+					e->controls.attached.link->b->coords);
 		m_pro(ft_lstadd(&e->controls.attached.link->a->links,
 					ft_lstnewref(e->controls.attached.link, 0)));
 		m_pro(ft_lstadd(&e->controls.attached.link->b->links,

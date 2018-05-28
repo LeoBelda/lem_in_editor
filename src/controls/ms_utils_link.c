@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 11:02:41 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 14:36:40 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 17:30:24 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	remove_link_dep(t_list **links, int id)
 	}
 	ft_lstdel_n(links, i, lstdel_linkref);
 }
-
 
 t_link	*check_duplicate(t_room tar, t_room *a)
 {

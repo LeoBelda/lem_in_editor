@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:13:03 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 15:52:04 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 17:29:48 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	kb_quit(void *e, int type)
 	if (type == SDL_KEYDOWN)
 	{
 		if (((t_env*)e)->mode == V_EDIT)
-		print_map(((t_env*)e)->map);
+			print_map(((t_env*)e)->map);
 		((t_env*)e)->quit = 1;
 	}
 }
