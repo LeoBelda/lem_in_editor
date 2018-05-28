@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 16:24:17 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 10:32:37 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 13:54:39 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ int			parse_moves(const char *line, t_parse *parse)
 		i = 1;
 		moves[len].ant_id = ft_atoui(&tab[len][i]);
 		if (!moves[len].ant_id || moves[len].ant_id > parse->ant_count)
-		{
-			ft_printf("%d\n", moves[len].ant_id);
 			return (LINE_USR_BAD);
-		}
 		while (ft_isdigit(tab[len][i]))
 			i++;
 		i++;

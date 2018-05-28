@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:27:50 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 03:34:13 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 13:56:54 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_mode	parse_args(int argc, char **argv)
 	return (V_VISU);
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_mode	mode;
 

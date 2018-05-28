@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:27:32 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 10:29:28 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 14:06:01 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ static void			init_link_buffers(t_scene scene)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_link[VBO_MODEL_COORDS_LK]);
 	glBufferData(GL_ARRAY_BUFFER,
-				sizeof(t_glfloat2) * E_LINK_MAX * 2,
+				sizeof(t_glfloat2) * 2 * E_LINK_MAX,
 				scene.link_positions, GL_STREAM_DRAW);
 	glEnableVertexAttribArray(VBO_MODEL_COORDS_LK);
 	glVertexAttribPointer(VBO_MODEL_COORDS_LK, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_link[VBO_STATE_LK]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * E_LINK_MAX * 2,
+	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 2 * E_LINK_MAX,
 				scene.link_states, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(VBO_STATE_LK);
 	glVertexAttribPointer(VBO_STATE_LK, 1, GL_FLOAT, GL_FALSE, 0, NULL);
@@ -59,14 +59,14 @@ static void			init_instances_buffers(t_scene scene)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_room[VBO_TRANS]);
 	glBufferData(GL_ARRAY_BUFFER,
-			E_ROOM_MAX * sizeof(GLfloat) * 2,
+			sizeof(GLfloat) * 2 * E_ROOM_MAX,
 			scene.room_positions, GL_STREAM_DRAW);
 	glEnableVertexAttribArray(VBO_TRANS);
 	glVertexAttribPointer(VBO_TRANS, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 	glVertexAttribDivisor(VBO_TRANS, 1);
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_room[VBO_STATE]);
 	glBufferData(GL_ARRAY_BUFFER,
-			E_ROOM_MAX * sizeof(GLint) * 2,
+			sizeof(GLint) * 2 * E_ROOM_MAX,
 			NULL, GL_DYNAMIC_DRAW);
 	glEnableVertexAttribArray(VBO_STATE);
 	glVertexAttribPointer(VBO_STATE, 2, GL_INT, GL_FALSE, 0, NULL);

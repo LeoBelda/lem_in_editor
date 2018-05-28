@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:16:07 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 05:12:01 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 13:53:38 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_controls	controls_edit(void)
 	return (controls);
 }
 
-t_controls	init_controls(t_mode mode)
+t_controls			init_controls(t_mode mode)
 {
 	return (mode == V_VISU ? controls_visu() : controls_edit());
 }

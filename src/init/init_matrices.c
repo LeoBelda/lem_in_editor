@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:27:28 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 17:49:16 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 13:55:14 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ t_matrices	init_matrices(t_map map, float ratio, t_vec2 win, t_mode mode)
 
 	if (mode == V_VISU)
 	{
-	get_limits(map, lim);
-	get_frustrum_bounds(lim, ratio);
+		get_limits(map, lim);
+		get_frustrum_bounds(lim, ratio);
 	}
 	else
 	{
@@ -96,8 +96,7 @@ t_matrices	init_matrices(t_map map, float ratio, t_vec2 win, t_mode mode)
 	matrices.view_mat = look_at(matrices.eye, matrices.tar, matrices.up);
 	matrices.proj_mat = orthomat4new(ffrustrumnew(
 		(t_vec2){lim[LIM_MIN].x, lim[LIM_MAX].x},
-		(t_vec2){lim[LIM_MAX].y, lim[LIM_MIN].y},
-		(t_vec2){100., -100.}));
+		(t_vec2){lim[LIM_MAX].y, lim[LIM_MIN].y}, (t_vec2){100., -100.}));
 	matrices.final_mat = mat4xmat4(matrices.proj_mat, matrices.view_mat);
 	return (matrices);
 }

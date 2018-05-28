@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ms_room.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/28 13:55:55 by lbelda            #+#    #+#             */
+/*   Updated: 2018/05/28 13:56:26 by lbelda           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "controls.h"
 #include "visu.h"
 
@@ -32,7 +44,7 @@ static void	remove_link_dep(t_list **links, int id)
 	while (tmp)
 	{
 		if (id == ((t_link*)(tmp->content))->id)
-			break;
+			break ;
 		tmp = tmp->next;
 		i++;
 	}
@@ -60,7 +72,7 @@ static void	remove_related_links(t_env *e, t_room *del)
 	refresh_all_links(&e->scene, e->map);
 }
 
-void	ms_room(void *e, int type, int x, int y)
+void		ms_room(void *e, int type, int x, int y)
 {
 	t_room		*del;
 	t_env		*env;

@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:12:58 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 08:04:04 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 13:55:48 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	search_ms_lookup(t_env *e, SDL_MouseButtonEvent ms)
 		}
 	}
 }
+
 void		handle_events(t_env *e)
 {
 	SDL_Event	event;
