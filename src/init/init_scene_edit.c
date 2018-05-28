@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:27:32 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 18:04:47 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 10:29:28 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ static void			init_link_buffers(t_scene scene)
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_link[VBO_MODEL_COORDS_LK]);
 	glBufferData(GL_ARRAY_BUFFER,
 				sizeof(t_glfloat2) * E_LINK_MAX * 2,
-				scene.link_positions, GL_DYNAMIC_DRAW);
+				scene.link_positions, GL_STREAM_DRAW);
 	glEnableVertexAttribArray(VBO_MODEL_COORDS_LK);
 	glVertexAttribPointer(VBO_MODEL_COORDS_LK, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_link[VBO_STATE_LK]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * scene.nb_links * 2,
-				NULL, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * E_LINK_MAX * 2,
+				scene.link_states, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(VBO_STATE_LK);
 	glVertexAttribPointer(VBO_STATE_LK, 1, GL_FLOAT, GL_FALSE, 0, NULL);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -60,7 +60,7 @@ static void			init_instances_buffers(t_scene scene)
 	glBindBuffer(GL_ARRAY_BUFFER, scene.vbos_room[VBO_TRANS]);
 	glBufferData(GL_ARRAY_BUFFER,
 			E_ROOM_MAX * sizeof(GLfloat) * 2,
-			scene.room_positions, GL_DYNAMIC_DRAW);
+			scene.room_positions, GL_STREAM_DRAW);
 	glEnableVertexAttribArray(VBO_TRANS);
 	glVertexAttribPointer(VBO_TRANS, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 	glVertexAttribDivisor(VBO_TRANS, 1);
@@ -97,7 +97,9 @@ t_scene				init_scene_edit(t_map map)
 	s.nb_links = 0;
 	m_pro_null(s.room_positions = ft_memalloc(sizeof(t_vec2) * E_ROOM_MAX));
 	m_pro_null(s.room_states = ft_memalloc(sizeof(GLint) * E_ROOM_MAX));
-	m_pro_null(s.link_positions = ft_memalloc(sizeof(GLfloat) * E_LINK_MAX * 2));
+	m_pro_null(s.link_positions =
+			ft_memalloc(sizeof(GLfloat) * E_LINK_MAX * 2));
+	m_pro_null(s.link_states = ft_memalloc(sizeof(GLfloat) * E_LINK_MAX * 2));
 	s.room_model = create_room_model();
 	s.timeline = (t_timeline){0., 0., -1, map.nb_turns, 0.};
 	init_gl_objects(&s);

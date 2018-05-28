@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 07:19:23 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 09:22:39 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 10:29:39 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,16 +94,18 @@ void	refresh_links_from(t_scene *scene, t_map map, int id)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void	refresh_link(t_scene *scene, t_map map, int id)
+*/
+void	refresh_link(t_scene *scene, t_map map, int id, t_vec2 b_coords)
 {
-	t_room		*target;
+	t_link	*target;
 
-	target = (t_room*)(ft_lstat(map.links, id - 1)->content);
+	target = (t_link*)(ft_lstat(map.links, id - 1)->content);
 	scene->link_positions[(id - 1) * 2] =
-			(t_glfloat2) {target->coords.x, target->coords.y};
-	glBindBuffer(GL_ARRAY_BUFFER, scene->vbos_room[VBO_MODEL_COORDS_LK]);
+			(t_glfloat2) {target->a->coords.x, target->a->coords.y};
+	scene->link_positions[(id - 1) * 2 + 1] =
+			(t_glfloat2) {b_coords.x, b_coords.y};
+	glBindBuffer(GL_ARRAY_BUFFER, scene->vbos_link[VBO_MODEL_COORDS_LK]);
 	glBufferSubData(GL_ARRAY_BUFFER, sizeof(GLfloat) * (id - 1) * 4,
 			sizeof(GLfloat) * 4, &scene->link_positions[(id - 1) * 2]);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
-*/

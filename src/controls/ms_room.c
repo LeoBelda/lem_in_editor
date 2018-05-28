@@ -6,7 +6,7 @@ static void	add_room(t_vec2 coords, int id, t_list **rooms)
 	t_room		new;
 
 	new = (t_room){id, ft_itoa(id), coords, NULL};
-	ft_lstradd(rooms, ft_lstnew((void*)&new, sizeof(t_room)));
+	m_pro(ft_lstradd(rooms, ft_lstnew((void*)&new, sizeof(t_room))));
 }
 
 static void	remove_room(t_room *del, t_list **rooms)
