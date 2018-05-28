@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 13:55:55 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 14:37:14 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 17:24:11 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,22 @@ static void	add_room(t_vec2 coords, int id, t_list **rooms)
 	m_pro(ft_lstradd(rooms, ft_lstnew((void*)&new, sizeof(t_room))));
 }
 
-static void	remove_room(t_room *del, t_list **rooms)
+static void	remove_room(t_room *del, t_map *map)
 {
 	t_list	*elem;
 
-	elem = ft_lstat(*rooms, del->id - 1)->next;
+	elem = ft_lstat(map->rooms, del->id - 1);
+	if (elem->content == (void*)map->start)
+		map->start = NULL;
+	else if (elem->content == (void*)map->end)
+		map->end = NULL;
+	elem = elem->next;
 	while (elem)
 	{
 		((t_room*)(elem->content))->id--;
 		elem = elem->next;
 	}
-	ft_lstdel_n(rooms, del->id - 1, &lstdel_room);
+	ft_lstdel_n(&map->rooms, del->id - 1, &lstdel_room);
 }
 
 static void	remove_related_links(t_env *e, t_room *del)
@@ -69,7 +74,7 @@ void		ms_room(void *e, int type, int x, int y)
 		{
 			id = del->id;
 			remove_related_links(env, del);
-			remove_room(del, &env->map.rooms);
+			remove_room(del, &env->map);
 			env->scene.nb_rooms--;
 			refresh_rooms_from(&env->scene, env->map, id);
 		}

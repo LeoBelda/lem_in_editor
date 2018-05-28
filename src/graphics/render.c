@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:12:46 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 10:29:39 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 16:51:08 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			render(t_env *e)
 		if (e->mode == V_VISU)
 			update_turns(&e->scene, e->map);
 		else
-			e->scene.ratio = 0.5;
+			update_start_end(&e->scene, e->map);
 		update_uniforms(e->scene, e->matrices);
 		render_rooms(e->scene);
 		render_links(e->scene);

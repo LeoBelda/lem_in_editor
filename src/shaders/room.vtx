@@ -29,6 +29,10 @@ void	main()
 		t_ratio = (mat.ratio - 0.5) * 2.;
 		vtxColor = vec4(1.0, 1. - t_ratio, 1. - t_ratio, 1.0);
 	}
+	else if (i_state.x < 0)
+	{
+		vtxColor = vec4(0.0, 1.0 , 0.0, 1.0);
+	}
 	else
 	{
 		vtxColor = vec4(1.0, 1.0 , 1.0, 1.0);

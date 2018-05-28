@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 15:05:23 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 15:43:54 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 16:56:31 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	kb_start(void *e, int type)
 	{
 		if ((closest = find_closest_room(env->map.rooms,
 							(t_vec2){(float)x, (float)y})))
+		{
 			env->map.start = closest;
+			update_start_end(&env->scene, env->map);
+		}
 	}
 }
 
@@ -43,6 +46,9 @@ void	kb_end(void *e, int type)
 	{
 		if ((closest = find_closest_room(env->map.rooms,
 							(t_vec2){(float)x, (float)y})))
+		{
 			env->map.end = closest;
+			update_start_end(&env->scene, env->map);
+		}
 	}
 }

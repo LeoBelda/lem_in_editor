@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:27:57 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/24 10:27:58 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 16:57:38 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	update_room_states(t_scene *scene, t_map map, int cur_turn)
 		scene->room_states[map.turns[cur_turn][i].start->id].x = 1;
 		scene->room_states[map.turns[cur_turn][i].end->id].y = 1;
 	}
+	scene->room_states[map.start->id] = (t_vec2r){-1, -1};
+	scene->room_states[map.end->id] = (t_vec2r){-1, -1};
 	glBindBuffer(GL_ARRAY_BUFFER, scene->vbos_room[VBO_STATE]);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(t_vec2r) * scene->nb_rooms,
 								scene->room_states);
@@ -46,6 +48,19 @@ static void	update_link_states(t_scene *scene, t_map map, int cur_turn)
 	glBindBuffer(GL_ARRAY_BUFFER, scene->vbos_link[VBO_STATE_LK]);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(GLfloat) * 2 * scene->nb_links,
 								scene->link_states);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void		update_start_end(t_scene *scene, t_map map)
+{
+	ft_bzero(scene->room_states, sizeof(t_vec2r) * scene->nb_rooms);
+	if (map.start)
+		scene->room_states[map.start->id - 1] = (t_vec2r){-1, -1};
+	if (map.end)
+		scene->room_states[map.end->id - 1] = (t_vec2r){-1, -1};
+	glBindBuffer(GL_ARRAY_BUFFER, scene->vbos_room[VBO_STATE]);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(t_vec2r) * scene->nb_rooms,
+								scene->room_states);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 

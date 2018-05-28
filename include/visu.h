@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 09:58:41 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/25 08:04:04 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/28 16:56:52 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_matrices		init_matrices(t_map map, float ratio, t_vec2 win, t_mode mode);
 int				render(t_env *e);
 void			update_uniforms(t_scene scene, t_matrices mat);
 void			update_turns(t_scene *scene, t_map map);
+void			update_start_end(t_scene *scene, t_map map);
 
 void			handle_events(t_env *e);
 
