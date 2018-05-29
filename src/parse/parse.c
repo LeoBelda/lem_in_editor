@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:30:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 16:27:55 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/29 11:27:52 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static int	parse_line(char *line, t_parse *parse)
 	{
 		parse->mode = M_MOVES;
 		parse->parse_state = PARSE_MOVES;
+		ft_printf("\n");
 		return (LINE_OK);
 	}
 	else if (!ft_strcmp(line, "ERROR"))

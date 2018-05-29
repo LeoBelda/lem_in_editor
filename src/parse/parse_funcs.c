@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 16:23:35 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/24 13:15:43 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/29 15:27:10 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,14 +110,16 @@ int			parse_room(const char *line, t_parse *parse)
 		return (LINE_MAP_BAD);
 	m_pro_null(name = ft_strndup(line, ft_strcspn(line, WHITE_STR)));
 	if (name_is_duplicate(name, parse->rooms))
+	{
+		free_pro((void**)&name);
 		return (LINE_MAP_BAD);
+	}
 	i = ft_strlen(name);
 	xy = get_room_coords(&line[i]);
 	m_pro(ft_lstradd(&parse->rooms,
-		ft_lstnew(&((t_room){id, name, xy, NULL}), sizeof(t_room))));
+		ft_lstnew(&((t_room){id++, name, xy, NULL}), sizeof(t_room))));
 	ft_putendl(line);
 	parse->command != COMMAND_NONE ? apply_command(parse) : (void)parse;
-	id++;
 	return (LINE_OK);
 }
 

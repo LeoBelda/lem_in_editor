@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 09:33:43 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 17:31:50 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/29 19:53:58 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	choose_bind(t_env *e, int x, int y)
 								(t_vec2){(float)x, (float)y})))
 			e->controls.which = MS_A_ROOM;
 	}
-	else
+	else if (e->scene.nb_links < E_LINK_MAX)
 	{
 		if ((target = find_closest_room(e->map.rooms,
 								(t_vec2){(float)x, (float)y})))

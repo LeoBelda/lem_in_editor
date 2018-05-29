@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 13:55:55 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 19:01:25 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/29 19:52:39 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void		ms_room(void *e, int type, int x, int y)
 			env->scene.nb_rooms--;
 			refresh_rooms_from(&env->scene, env->map, id);
 		}
-		else
+		else if (env->scene.nb_rooms < E_ROOM_MAX)
 		{
 			env->scene.nb_rooms++;
 			add_room((t_vec2){(float)x, (float)y}, env->scene.nb_rooms,
