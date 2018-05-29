@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:29:28 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/29 19:53:08 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/29 19:56:05 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 
 # define U_BINDING1 0
 
-# define E_ROOM_MAX 5
-# define E_LINK_MAX 5
+# define E_ROOM_MAX 500
+# define E_LINK_MAX 500
 
 enum			e_vbos
 {
