@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 09:58:41 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 16:56:52 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/30 18:34:01 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ void			update_start_end(t_scene *scene, t_map map);
 
 void			handle_events(t_env *e);
 
-void			clean_env(t_env e);
+void			clean_env(t_env *e);
 
 #endif

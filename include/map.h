@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:28:48 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 15:41:13 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/30 16:41:16 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ typedef struct	s_move
 
 typedef struct	s_map
 {
-	int		nb_rooms;
-	int		nb_links;
-	int		nb_turns;
-	t_list	*rooms;
-	t_list	*links;
-	t_move	**turns;
-	t_room	*start;
-	t_room	*end;
+	uintmax_t	nb_ants;
+	int			nb_rooms;
+	int			nb_links;
+	int			nb_turns;
+	t_list		*rooms;
+	t_list		*links;
+	t_move		**turns;
+	t_room		*start;
+	t_room		*end;
 }				t_map;
 
 void			print_map(t_map map);

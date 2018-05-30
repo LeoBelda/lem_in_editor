@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 12:12:46 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 16:51:08 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/30 18:42:41 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,5 @@ int			render(t_env *e)
 		check_glerror();
 		SDL_GL_SwapWindow(e->win);
 	}
-	clean_env(*e);
 	return (0);
 }

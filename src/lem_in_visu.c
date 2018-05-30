@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:27:46 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 16:33:41 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/30 18:33:47 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,31 @@
 #include "parse.h"
 #include "scene.h"
 
-void	lem_in_visu(t_mode mode)
+static uintmax_t	prompt_user(void)
+{
+	char		*line;
+	uintmax_t	ants;
+	int			ret;
+
+	line = NULL;
+	ft_dprintf(2, "CONTROLS\n"
+		"Mouse Right-click                     :    create/delete room\n"
+		"Mouse Left-click (hold)               :    draw link\n"
+		"CTRL (hold) + Mouse Left-click (hold) :    move\n"
+		"Press S while cursor over a room      :    start room\n"
+		"      E                               :    end room\n"
+		"      ESC                             :    quit and print map\n\n"
+		"Enter ants number :\n");
+	ret = get_next_line(0, &line);
+	if (ret == -1)
+		error_exit("get next line failed");
+	ants = ft_atoui(line);
+	if (ants <= 0)
+		error_exit("invalid ant count");
+	return (ants);
+}
+
+void				lem_in_visu(t_mode mode)
 {
 	t_env		e;
 	t_parse		p;
@@ -32,10 +56,13 @@ void	lem_in_visu(t_mode mode)
 			error_exit("map error: missing start or end");
 		clean_parse(p);
 	}
+	else
+		e.map.nb_ants = prompt_user();
 	e.controls = init_controls(mode);
 	init_env(&e);
 	e.matrices = init_matrices(e.map, e.ratio,
 							(t_vec2){e.x_win, e.y_win}, mode);
 	e.scene = (mode == V_VISU ? init_scene(e.map) : init_scene_edit(e.map));
 	render(&e);
+	clean_env(&e);
 }

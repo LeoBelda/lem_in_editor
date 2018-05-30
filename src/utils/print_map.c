@@ -6,21 +6,19 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 15:39:28 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/30 15:42:12 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/30 17:05:23 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 #include "ft_printf.h"
 
-#define ANT_COUNT 3
-
 void	print_map(t_map map)
 {
 	t_room	*rcur;
 	t_link	*lcur;
 
-	ft_printf("%ju\n", ANT_COUNT);
+	ft_printf("%ju\n", map.nb_ants);
 	while (map.rooms)
 	{
 		rcur = (t_room*)(map.rooms->content);

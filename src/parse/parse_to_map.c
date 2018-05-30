@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 13:17:53 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 16:30:10 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/30 16:56:05 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ t_map			parse_to_map(t_parse parse)
 
 	m_pro_null(ants_state = ft_memalloc((parse.ant_count + 1) * sizeof(int)));
 	ft_intset(ants_state, parse.start->id, parse.ant_count + 1);
-	map = (t_map){ft_lstcount(parse.rooms), ft_lstcount(parse.links),
-			ft_lstcount(parse.turns), parse.rooms, parse.links, NULL,
-						parse.start, parse.end};
+	map = (t_map){parse.ant_count, ft_lstcount(parse.rooms),
+		ft_lstcount(parse.links), ft_lstcount(parse.turns), parse.rooms,
+		parse.links, NULL, parse.start, parse.end};
 	m_pro_null(map.turns = ft_memalloc((map.nb_turns + 1) * sizeof(t_move*)));
 	j = -1;
 	while (++j < map.nb_turns)
