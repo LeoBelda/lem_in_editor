@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:29:06 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/24 14:02:20 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/30 16:25:24 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct	s_room
 	char			*name;
 	t_vec2			coords;
 	t_list			*links;
+	t_list			*p_links;
 }				t_room;
 
 typedef struct	s_link

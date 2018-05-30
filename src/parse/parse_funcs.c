@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 16:23:35 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/29 15:27:10 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/30 16:26:28 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	store_link(const char *line, t_parse *parse, int len1, int len2)
 	if (!ft_strcmp(r1, r2) || !(ptr[LK1] = look_for_room(r1, parse->rooms))
 							|| !(ptr[LK2] = look_for_room(r2, parse->rooms)))
 		return (LINE_MAP_BAD);
-	if (!link_is_duplicate(ptr[LK1], ptr[LK2]->links))
+	if (!link_is_duplicate(ptr[LK1], ptr[LK2]->p_links))
 	{
 		link = (t_link){id, ptr[LK1], ptr[LK2]};
 		m_pro(ft_lstadd(&parse->links,
@@ -89,6 +89,8 @@ static int	store_link(const char *line, t_parse *parse, int len1, int len2)
 					ft_lstnewref(parse->links->content, 0)));
 		m_pro(ft_lstadd(&ptr[LK2]->links,
 					ft_lstnewref(parse->links->content, 0)));
+		m_pro(ft_lstadd(&ptr[LK1]->p_links, ft_lstnewref(ptr[LK2], 0)));
+		m_pro(ft_lstadd(&(ptr[LK2]->p_links), ft_lstnewref(ptr[LK1], 0)));
 		id++;
 	}
 	return (LINE_OK);
@@ -117,7 +119,7 @@ int			parse_room(const char *line, t_parse *parse)
 	i = ft_strlen(name);
 	xy = get_room_coords(&line[i]);
 	m_pro(ft_lstradd(&parse->rooms,
-		ft_lstnew(&((t_room){id++, name, xy, NULL}), sizeof(t_room))));
+		ft_lstnew(&((t_room){id++, name, xy, NULL, NULL}), sizeof(t_room))));
 	ft_putendl(line);
 	parse->command != COMMAND_NONE ? apply_command(parse) : (void)parse;
 	return (LINE_OK);

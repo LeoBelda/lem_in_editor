@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 13:55:55 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/29 19:52:39 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/30 16:26:49 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	add_room(t_vec2 coords, int id, t_list **rooms)
 	t_room		new;
 	static int	i = 1;
 
-	new = (t_room){id, ft_itoa(i++), coords, NULL};
+	new = (t_room){id, ft_itoa(i++), coords, NULL, NULL};
 	m_pro(ft_lstradd(rooms, ft_lstnew((void*)&new, sizeof(t_room))));
 }
 

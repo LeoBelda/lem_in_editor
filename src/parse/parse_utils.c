@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 16:24:08 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/24 16:38:51 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/30 16:27:14 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		link_is_duplicate(t_room *link, t_list *links)
 {
 	while (links)
 	{
-		if (links->content == (void*)link)
+		if ((t_room*)links->content == link)
 			return (1);
 		links = links->next;
 	}
