@@ -6,14 +6,14 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 16:23:35 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/30 16:26:28 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/31 10:53:24 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-#define LK1 0
-#define LK2 1
+#define L1 0
+#define L2 1
 
 int			parse_ants(const char *line, t_parse *parse)
 {
@@ -69,7 +69,7 @@ static int	store_link(const char *line, t_parse *parse, int len1, int len2)
 {
 	char		r1[len1 + 1];
 	char		r2[len2 + 1];
-	t_room		*ptr[2];
+	t_room		*p[2];
 	static int	id = 0;
 	t_link		link;
 
@@ -77,20 +77,18 @@ static int	store_link(const char *line, t_parse *parse, int len1, int len2)
 	r1[len1] = '\0';
 	ft_strncpy(r2, &line[ft_strcspn(line, "-") + 1], len2);
 	r2[len2] = '\0';
-	if (!ft_strcmp(r1, r2) || !(ptr[LK1] = look_for_room(r1, parse->rooms))
-							|| !(ptr[LK2] = look_for_room(r2, parse->rooms)))
+	if (!ft_strcmp(r1, r2) || !(p[L1] = look_for_room(r1, parse->rooms))
+							|| !(p[L2] = look_for_room(r2, parse->rooms)))
 		return (LINE_MAP_BAD);
-	if (!link_is_duplicate(ptr[LK1], ptr[LK2]->p_links))
+	if (!link_is_duplicate(p[L1], p[L2]->p_links))
 	{
-		link = (t_link){id, ptr[LK1], ptr[LK2]};
+		link = (t_link){id, p[L1], p[L2]};
 		m_pro(ft_lstadd(&parse->links,
 					ft_lstnew((void*)&link, sizeof(t_link))));
-		m_pro(ft_lstadd(&ptr[LK1]->links,
-					ft_lstnewref(parse->links->content, 0)));
-		m_pro(ft_lstadd(&ptr[LK2]->links,
-					ft_lstnewref(parse->links->content, 0)));
-		m_pro(ft_lstadd(&ptr[LK1]->p_links, ft_lstnewref(ptr[LK2], 0)));
-		m_pro(ft_lstadd(&(ptr[LK2]->p_links), ft_lstnewref(ptr[LK1], 0)));
+		m_pro(ft_lstadd(&p[L1]->links, ft_lstnewref(parse->links->content, 0)));
+		m_pro(ft_lstadd(&p[L2]->links, ft_lstnewref(parse->links->content, 0)));
+		m_pro(ft_lstadd(&p[L1]->p_links, ft_lstnewref(p[L2], 0)));
+		m_pro(ft_lstadd(&(p[L2]->p_links), ft_lstnewref(p[L1], 0)));
 		id++;
 	}
 	return (LINE_OK);

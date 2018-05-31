@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:29:20 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/28 16:17:24 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/31 10:44:28 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,8 @@ int				name_is_duplicate(const char *name, t_list *rooms);
 t_vec2			get_room_coords(const char *line);
 
 void			clean_parse(t_parse parse);
+void			clean_parse_full(t_parse parse);
+
+void			error_map(t_parse p, const char *str);
 
 #endif

@@ -6,11 +6,12 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:30:13 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/24 13:33:12 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/31 10:45:36 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+#include "visu.h"
 
 static void	lstdel_moveparse(void *content, size_t size)
 {
@@ -27,5 +28,12 @@ static void	lstdel_moveparse(void *content, size_t size)
 
 void		clean_parse(t_parse parse)
 {
-	ft_lstdel(&parse.turns, &lstdel_moveparse);
+	ft_lstdel(&parse.turns, lstdel_moveparse);
+}
+
+void		clean_parse_full(t_parse parse)
+{
+	ft_lstdel(&parse.rooms, lstdel_room);
+	ft_lstdel(&parse.links, lstdel_link);
+	ft_lstdel(&parse.turns, lstdel_moveparse);
 }

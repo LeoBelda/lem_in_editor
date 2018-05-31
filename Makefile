@@ -20,7 +20,7 @@ CONTROLS_FILES=handle_events.c \
 
 UTILS_DIR=utils/
 UTILS_FILES=ogl_utils.c build_ogl_program.c \
-			print_map.c \
+			print_map.c error_map.c \
 			clean_env.c lstdels.c \
 			error.c protec.c debug.c
 

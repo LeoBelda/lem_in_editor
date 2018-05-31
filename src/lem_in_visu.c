@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:27:46 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/30 18:33:47 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/31 10:37:05 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void				lem_in_visu(t_mode mode)
 		if (p.start && p.end)
 			e.map = parse_to_map(p);
 		else
-			error_exit("map error: missing start or end");
+			error_map(p, "map error: missing start or end");
 		clean_parse(p);
 	}
 	else

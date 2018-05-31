@@ -6,7 +6,7 @@
 /*   By: lbelda <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 10:30:18 by lbelda            #+#    #+#             */
-/*   Updated: 2018/05/29 11:27:52 by lbelda           ###   ########.fr       */
+/*   Updated: 2018/05/31 10:44:54 by lbelda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_parse		parse(void)
 		valid_line = parse_line(line, &parse);
 		free_pro((void**)&line);
 		if (valid_line != LINE_OK)
-			error_exit(valid_line == LINE_USR_BAD ?
+			error_map(parse, valid_line == LINE_USR_BAD ?
 						"solution badly formatted" : "map error");
 	}
 	ft_lstrev(&parse.links);
